@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherLearn AI — The Future of Intelligent Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    /* Landing page specific styling */
+    .hero-section {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: 99px;
+      color: var(--accent-cyan);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+    }
+    .hero-title {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 800;
+      line-height: 1.1;
+      max-width: 900px;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #d8e5ff 50%, #00f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1.5px;
+    }
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .landing-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(10, 11, 16, 0.7);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .landing-nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .landing-nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .landing-nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+    .section-wrap {
+      padding: 80px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-header h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .feature-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    .landing-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-dim);
+      font-size: 13px;
+      background: var(--bg-secondary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Star Canvas -->
+  <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+  <!-- Top Navbar -->
+  <nav class="landing-nav">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="brand-logo-icon">✨</div>
+      <span class="brand-title" style="font-size:22px;">AetherLearn AI</span>
+    </div>
+    <div class="landing-nav-links">
+      <a href="#features">Features</a>
+      <a href="#courses">Courses</a>
+      <a href="#ai-preview">AI Tutor</a>
+      <a href="#testimonials">Community</a>
+      <a href="login.html" class="btn btn-secondary" style="padding:8px 16px;">Sign In</a>
+      <a href="login.html?tab=signup" class="btn btn-primary" style="padding:8px 20px;">Get Started Free →</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-badge">⚡ Powered by Next-Gen AI Learning Models</div>
+    <h1 class="hero-title">Master Any Subject 10x Faster with Personalized AI Tutoring</h1>
+    <p class="hero-subtitle">Interactive courses, automated flashcards, instant quiz generation from notes, and an adaptive 24/7 AI mentor tailored to your unique study pace.</p>
+    <div class="hero-cta-group">
+      <a href="login.html?tab=signup" class="btn btn-primary" style="padding:14px 32px;font-size:16px;">Start Learning Free 🚀</a>
+      <a href="login.html" class="btn btn-secondary" style="padding:14px 28px;font-size:16px;">Explore Demo Account 🎓</a>
+    </div>
+
+    <!-- Quick Stats -->
+    <div style="display:flex;gap:40px;margin-top:60px;flex-wrap:wrap;justify-content:center;">
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--accent-cyan);">98.4%</div>
+        <div style="font-size:13px;color:var(--text-muted);">Quiz Pass Rate</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--accent-green);">10,000+</div>
+        <div style="font-size:13px;color:var(--text-muted);">Active Students</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--accent-pink);">500+</div>
+        <div style="font-size:13px;color:var(--text-muted);">Interactive Lessons</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--accent-orange);">4.9 / 5.0</div>
+        <div style="font-size:13px;color:var(--text-muted);">Student Rating</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Grid -->
+  <section id="features" class="section-wrap">
+    <div class="section-header">
+      <h2>Engineered for High-Retention Learning</h2>
+      <p style="color:var(--text-muted);">Everything you need to accelerate your comprehension and retain technical concepts permanently.</p>
+    </div>
+    <div class="grid-cols-3">
+      <div class="card">
+        <div class="feature-icon-box" style="background:rgba(0,242,254,0.15);color:var(--accent-cyan);">🤖</div>
+        <h3 style="font-size:18px;margin-bottom:8px;color:#fff;">24/7 AI Code Mentor</h3>
+        <p style="font-size:14px;color:var(--text-muted);">Get instant explanations, code debugging, and tailored analogies anytime you are stuck on a difficult concept.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon-box" style="background:rgba(127,0,255,0.15);color:var(--accent-pink);">📝</div>
+        <h3 style="font-size:18px;margin-bottom:8px;color:#fff;">Instant PDF & Notes Summarizer</h3>
+        <p style="font-size:14px;color:var(--text-muted);">Upload your lecture slides or paste raw notes. Our AI distills them into structured bullet points and flashcards.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon-box" style="background:rgba(0,245,160,0.15);color:var(--accent-green);">🎯</div>
+        <h3 style="font-size:18px;margin-bottom:8px;color:#fff;">Auto-Generated Quizzes</h3>
+        <p style="font-size:14px;color:var(--text-muted);">Test yourself immediately. Transform any notes or curriculum into interactive multiple-choice tests with detailed explanations.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon-box" style="background:rgba(255,153,0,0.15);color:var(--accent-orange);">📅</div>
+        <h3 style="font-size:18px;margin-bottom:8px;color:#fff;">Smart Study Planner</h3>
+        <p style="font-size:14px;color:var(--text-muted);">Set daily goals, track homework deadlines, and let the algorithm optimize your spaced repetition schedule.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon-box" style="background:rgba(0,242,254,0.15);color:var(--accent-blue);">📊</div>
+        <h3 style="font-size:18px;margin-bottom:8px;color:#fff;">Real-Time Analytics</h3>
+        <p style="font-size:14px;color:var(--text-muted);">Visualize your weekly study streaks, test scores, subject masteries, and earn achievement badges along the way.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon-box" style="background:rgba(225,0,255,0.15);color:var(--accent-purple);">🏆</div>
+        <h3 style="font-size:18px;margin-bottom:8px;color:#fff;">Gamified Milestones</h3>
+        <p style="font-size:14px;color:var(--text-muted);">Level up your profile, unlock badges for perfect quiz scores and lesson streaks, and showcase your achievements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Courses Preview -->
+  <section id="courses" class="section-wrap" style="background:rgba(18, 22, 39, 0.4);border-radius:var(--radius-lg);border:1px solid var(--border-color);">
+    <div class="section-header">
+      <h2>Popular Masterclasses</h2>
+      <p style="color:var(--text-muted);">Comprehensive learning tracks with interactive modules and practice quizzes.</p>
+    </div>
+    <div class="grid-cols-3">
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80" alt="Python" class="course-thumb">
+        <div class="course-body">
+          <div class="course-tags"><span class="tag tag-cyan">AI & Python</span><span class="tag tag-green">Beginner</span></div>
+          <h3 class="course-title">Python for Artificial Intelligence & Data Science</h3>
+          <p class="course-desc">Master Python fundamentals, NumPy, Pandas, and neural network principles from scratch.</p>
+          <div class="course-footer">
+            <span>⏱️ 14 Hours</span>
+            <a href="login.html" class="btn btn-secondary" style="padding:6px 12px;font-size:12px;">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&auto=format&fit=crop&q=80" alt="React" class="course-thumb">
+        <div class="course-body">
+          <div class="course-tags"><span class="tag tag-purple">Web Dev</span><span class="tag tag-cyan">Intermediate</span></div>
+          <h3 class="course-title">Fullstack Modern React & Node.js Architecture</h3>
+          <p class="course-desc">Build reactive single page applications with modern hooks, JWT authentication, and REST APIs.</p>
+          <div class="course-footer">
+            <span>⏱️ 18 Hours</span>
+            <a href="login.html" class="btn btn-secondary" style="padding:6px 12px;font-size:12px;">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&auto=format&fit=crop&q=80" alt="Machine Learning" class="course-thumb">
+        <div class="course-body">
+          <div class="course-tags"><span class="tag tag-green">Machine Learning</span><span class="tag tag-purple">Advanced</span></div>
+          <h3 class="course-title">Deep Learning & Transformer Models Masterclass</h3>
+          <p class="course-desc">Understand attention mechanisms, fine-tune LLMs, and build computer vision pipelines.</p>
+          <div class="course-footer">
+            <span>⏱️ 22 Hours</span>
+            <a href="login.html" class="btn btn-secondary" style="padding:6px 12px;font-size:12px;">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="login.html" class="btn btn-primary" style="padding:12px 28px;">View All 8+ Mastercourses →</a>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section-wrap" style="text-align:center;">
+    <div class="card" style="padding:60px 40px;background:linear-gradient(135deg, rgba(127,0,255,0.15) 0%, rgba(0,242,254,0.15) 100%);border:1px solid rgba(0,242,254,0.3);">
+      <h2 style="font-size:36px;font-weight:800;color:#fff;margin-bottom:16px;">Ready to Elevate Your Learning Journey?</h2>
+      <p style="color:var(--text-muted);font-size:16px;max-width:600px;margin:0 auto 30px auto;">Join thousands of students and engineers mastering next-gen skills with AetherLearn AI.</p>
+      <a href="login.html?tab=signup" class="btn btn-primary" style="padding:14px 36px;font-size:16px;">Create Free Account Now ⚡</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="brand-logo-icon" style="width:28px;height:28px;font-size:14px;">✨</div>
+      <span style="color:#fff;font-weight:700;">AetherLearn AI</span>
+      <span>— Intelligent Study Platform</span>
+    </div>
+    <div>© 2026 AetherLearn Platform. All rights reserved.</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      generateStars(80);
+    });
+  </script>
+</body>
+</html>

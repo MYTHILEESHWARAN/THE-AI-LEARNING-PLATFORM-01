@@ -1,0 +1,5 @@
+{"_id":"quiz_ai","title":"AI Fundamentals Quiz","description":"Artificial intelligence concepts","category":"AI/ML","difficulty":"Hard","time_limit":20,"course_id":"course_ai"}
+{"_id":"quiz_dsa","title":"Data Structures Quiz","description":"Arrays, lists, trees, and graphs","category":"Computer Science","difficulty":"Medium","time_limit":15,"course_id":"course_dsa"}
+{"_id":"quiz_python","title":"Python Basics Quiz","description":"Test your Python fundamentals","category":"Programming","difficulty":"Easy","time_limit":10,"course_id":"course_python"}
+{"_id":"quiz_security","title":"Cybersecurity Quiz","description":"Security concepts and practices","category":"Security","difficulty":"Medium","time_limit":15,"course_id":"course_cyber"}
+{"_id":"quiz_web","title":"Web Development Quiz","description":"HTML, CSS, JavaScript essentials","category":"Web","difficulty":"Easy","time_limit":10,"course_id":"course_web"}

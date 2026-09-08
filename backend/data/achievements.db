@@ -1,0 +1,5 @@
+{"_id":"ach_1","user_id":"user_student","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_login"}
+{"_id":"ach_2","user_id":"user_student","achievement_id":"first_enroll","title":"Eager Learner","description":"Enrolled in your first course","icon":"📚","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_enroll"}
+{"_id":"ach_3","user_id":"user_student","achievement_id":"quiz_perfect","title":"Quiz Champion","description":"Scored 100% on a quiz","icon":"🏆","earned_at":"2026-09-07T12:45:07.063Z","user_ach":"user_student_quiz_perfect"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:19.034Z","_id":"qBtcgqW39qOCIbsV"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:37.117Z","_id":"EiHsi7LVJDa8rYlH"}

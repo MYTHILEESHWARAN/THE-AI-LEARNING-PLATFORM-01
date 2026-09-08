@@ -1,0 +1,6 @@
+{"_id":"prog_0","user_id":"user_student","lesson_id":"lesson_mod_course_python_0_0","course_id":"course_python","completed_at":"2026-09-08T12:45:06.976Z","user_lesson":"user_student_lesson_mod_course_python_0_0"}
+{"_id":"prog_1","user_id":"user_student","lesson_id":"lesson_mod_course_python_0_1","course_id":"course_python","completed_at":"2026-09-08T12:45:06.976Z","user_lesson":"user_student_lesson_mod_course_python_0_1"}
+{"_id":"prog_2","user_id":"user_student","lesson_id":"lesson_mod_course_python_0_2","course_id":"course_python","completed_at":"2026-09-08T12:45:06.976Z","user_lesson":"user_student_lesson_mod_course_python_0_2"}
+{"_id":"prog_3","user_id":"user_student","lesson_id":"lesson_mod_course_python_1_0","course_id":"course_python","completed_at":"2026-09-08T12:45:06.976Z","user_lesson":"user_student_lesson_mod_course_python_1_0"}
+{"_id":"prog_4","user_id":"user_student","lesson_id":"lesson_mod_course_web_0_0","course_id":"course_web","completed_at":"2026-09-08T12:45:06.976Z","user_lesson":"user_student_lesson_mod_course_web_0_0"}
+{"_id":"prog_5","user_id":"user_student","lesson_id":"lesson_mod_course_web_0_1","course_id":"course_web","completed_at":"2026-09-08T12:45:06.976Z","user_lesson":"user_student_lesson_mod_course_web_0_1"}

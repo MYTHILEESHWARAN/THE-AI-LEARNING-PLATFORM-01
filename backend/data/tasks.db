@@ -1,0 +1,3 @@
+{"_id":"task_1","user_id":"user_student","title":"Complete Python Chapter 2","subject":"Python Programming","duration":60,"due_date":"2026-09-09","completed":false,"completed_at":null,"created_at":"2026-09-08T12:45:06.976Z"}
+{"_id":"task_2","user_id":"user_student","title":"Practice DSA Problems","subject":"Data Structures","duration":45,"due_date":"2026-09-10","completed":false,"completed_at":null,"created_at":"2026-09-08T12:45:06.976Z"}
+{"_id":"task_3","user_id":"user_student","title":"Review HTML Basics","subject":"Web Development","duration":30,"due_date":"2026-09-07","completed":true,"completed_at":"2026-09-06T12:45:07.063Z","created_at":"2026-09-07T12:45:07.063Z"}

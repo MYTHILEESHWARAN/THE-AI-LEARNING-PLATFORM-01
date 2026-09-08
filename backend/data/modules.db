@@ -1,0 +1,32 @@
+{"_id":"mod_course_ai_0","course_id":"course_ai","title":"Introduction & Fundamentals","order_index":0}
+{"_id":"mod_course_ai_1","course_id":"course_ai","title":"Core Concepts","order_index":1}
+{"_id":"mod_course_ai_2","course_id":"course_ai","title":"Advanced Topics","order_index":2}
+{"_id":"mod_course_ai_3","course_id":"course_ai","title":"Projects & Practice","order_index":3}
+{"_id":"mod_course_cyber_0","course_id":"course_cyber","title":"Introduction & Fundamentals","order_index":0}
+{"_id":"mod_course_cyber_1","course_id":"course_cyber","title":"Core Concepts","order_index":1}
+{"_id":"mod_course_cyber_2","course_id":"course_cyber","title":"Advanced Topics","order_index":2}
+{"_id":"mod_course_cyber_3","course_id":"course_cyber","title":"Projects & Practice","order_index":3}
+{"_id":"mod_course_db_0","course_id":"course_db","title":"Introduction & Fundamentals","order_index":0}
+{"_id":"mod_course_db_1","course_id":"course_db","title":"Core Concepts","order_index":1}
+{"_id":"mod_course_db_2","course_id":"course_db","title":"Advanced Topics","order_index":2}
+{"_id":"mod_course_db_3","course_id":"course_db","title":"Projects & Practice","order_index":3}
+{"_id":"mod_course_dsa_0","course_id":"course_dsa","title":"Arrays & Strings","order_index":0}
+{"_id":"mod_course_dsa_1","course_id":"course_dsa","title":"Linked Lists & Stacks","order_index":1}
+{"_id":"mod_course_dsa_2","course_id":"course_dsa","title":"Trees & Graphs","order_index":2}
+{"_id":"mod_course_dsa_3","course_id":"course_dsa","title":"Sorting & Dynamic Prog","order_index":3}
+{"_id":"mod_course_java_0","course_id":"course_java","title":"Introduction & Fundamentals","order_index":0}
+{"_id":"mod_course_java_1","course_id":"course_java","title":"Core Concepts","order_index":1}
+{"_id":"mod_course_java_2","course_id":"course_java","title":"Advanced Topics","order_index":2}
+{"_id":"mod_course_java_3","course_id":"course_java","title":"Projects & Practice","order_index":3}
+{"_id":"mod_course_ml_0","course_id":"course_ml","title":"Introduction & Fundamentals","order_index":0}
+{"_id":"mod_course_ml_1","course_id":"course_ml","title":"Core Concepts","order_index":1}
+{"_id":"mod_course_ml_2","course_id":"course_ml","title":"Advanced Topics","order_index":2}
+{"_id":"mod_course_ml_3","course_id":"course_ml","title":"Projects & Practice","order_index":3}
+{"_id":"mod_course_python_0","course_id":"course_python","title":"Getting Started with Python","order_index":0}
+{"_id":"mod_course_python_1","course_id":"course_python","title":"Data Structures","order_index":1}
+{"_id":"mod_course_python_2","course_id":"course_python","title":"Object-Oriented Python","order_index":2}
+{"_id":"mod_course_python_3","course_id":"course_python","title":"Advanced Topics","order_index":3}
+{"_id":"mod_course_web_0","course_id":"course_web","title":"HTML & CSS Fundamentals","order_index":0}
+{"_id":"mod_course_web_1","course_id":"course_web","title":"JavaScript Essentials","order_index":1}
+{"_id":"mod_course_web_2","course_id":"course_web","title":"React Basics","order_index":2}
+{"_id":"mod_course_web_3","course_id":"course_web","title":"Backend with Node.js","order_index":3}

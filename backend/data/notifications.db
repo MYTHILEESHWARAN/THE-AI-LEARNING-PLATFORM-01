@@ -1,0 +1,4 @@
+{"_id":"notif_1","user_id":"user_student","title":"Welcome to Learning Platform! 🎉","message":"Start your journey by exploring our courses.","type":"info","read":false,"created_at":"2026-09-08T12:45:06.976Z"}
+{"_id":"notif_2","user_id":"user_student","title":"🏆 Achievement Unlocked!","message":"You earned \"Quiz Champion\" for scoring 100% on Web Dev Quiz!","type":"success","read":false,"created_at":"2026-09-07T12:45:07.063Z"}
+{"_id":"notif_3","user_id":"user_student","title":"New Course: Machine Learning","message":"Machine Learning is now available. Enroll today!","type":"info","read":false,"created_at":"2026-09-06T12:45:07.063Z"}
+{"_id":"notif_4","user_id":"user_student","title":"📅 Study Reminder","message":"You have a study task due tomorrow. Don't forget!","type":"warning","read":true,"created_at":"2026-09-06T12:45:07.063Z"}

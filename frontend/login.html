@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Register — AetherLearn AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .auth-page-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(18, 22, 39, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.1);
+      backdrop-filter: blur(20px);
+    }
+    .auth-tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 28px;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .auth-tab.active {
+      background: var(--gradient-neon);
+      color: #060913;
+      box-shadow: 0 2px 10px rgba(0, 242, 254, 0.3);
+    }
+    .demo-accounts {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+    .demo-btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Star Canvas -->
+  <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+  <div class="auth-page-wrap">
+    <div class="auth-card">
+      <!-- Brand -->
+      <div style="text-align:center;margin-bottom:24px;">
+        <a href="index.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
+          <div class="brand-logo-icon">✨</div>
+          <span class="brand-title" style="font-size:22px;">AetherLearn AI</span>
+        </a>
+        <p style="color:var(--text-muted);font-size:13px;margin-top:6px;">Unlock intelligent, personalized mastery</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleAuthSubmit(event, 'login')">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="login-email" class="form-control" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <label class="form-label" style="margin-bottom:0;">Password</label>
+          </div>
+          <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:12px;margin-top:8px;" id="login-btn">
+          Sign In to Dashboard →
+        </button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signup-form" style="display:none;" onsubmit="handleAuthSubmit(event, 'signup')">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="signup-name" class="form-control" placeholder="Alex Morgan" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="signup-email" class="form-control" placeholder="alex@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="signup-password" class="form-control" placeholder="At least 6 characters" required minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:12px;margin-top:8px;" id="signup-btn">
+          Create Account Free 🚀
+        </button>
+      </form>
+
+      <!-- Demo Accounts Quick Login -->
+      <div class="demo-accounts">
+        <div style="font-size:12px;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">1-Click Quick Demo Access</div>
+        <div class="demo-btn-group">
+          <button type="button" class="btn btn-secondary" style="flex:1;font-size:12px;padding:8px;" onclick="fillDemo('student')">
+            🎓 Student Demo
+          </button>
+          <button type="button" class="btn btn-secondary" style="flex:1;font-size:12px;padding:8px;" onclick="fillDemo('admin')">
+            👑 Admin Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script>
+    function switchAuthTab(tab) {
+      document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+      document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+      document.getElementById('login-form').style.display = tab === 'login' ? 'block' : 'none';
+      document.getElementById('signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+    }
+
+    function fillDemo(type) {
+      switchAuthTab('login');
+      if (type === 'student') {
+        document.getElementById('login-email').value = 'student@demo.com';
+        document.getElementById('login-password').value = 'student123';
+      } else {
+        document.getElementById('login-email').value = 'admin@demo.com';
+        document.getElementById('login-password').value = 'admin123';
+      }
+      showToast(`Filled ${type} credentials. Click "Sign In" to enter!`, 'info');
+    }
+
+    async function handleAuthSubmit(e, type) {
+      e.preventDefault();
+      const btn = document.getElementById(`${type}-btn`);
+      btn.disabled = true;
+      btn.innerHTML = 'Authenticating...';
+
+      try {
+        let endpoint = type === 'login' ? '/auth/login' : '/auth/signup';
+        let payload = {};
+        if (type === 'login') {
+          payload.email = document.getElementById('login-email').value.trim();
+          payload.password = document.getElementById('login-password').value;
+        } else {
+          payload.name = document.getElementById('signup-name').value.trim();
+          payload.email = document.getElementById('signup-email').value.trim();
+          payload.password = document.getElementById('signup-password').value;
+        }
+
+        const res = await fetch(`${API_BASE}${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Authentication failed');
+
+        // Save session
+        localStorage.setItem('lp_token', data.token);
+        localStorage.setItem('lp_user', JSON.stringify(data.user));
+
+        showToast(type === 'login' ? 'Welcome back!' : 'Account created successfully!', 'success');
+
+        setTimeout(() => {
+          if (data.user && data.user.role === 'admin') {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
+        }, 700);
+
+      } catch (err) {
+        showToast(err.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = type === 'login' ? 'Sign In to Dashboard →' : 'Create Account Free 🚀';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      generateStars(70);
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('tab') === 'signup') switchAuthTab('signup');
+    });
+  </script>
+</body>
+</html>

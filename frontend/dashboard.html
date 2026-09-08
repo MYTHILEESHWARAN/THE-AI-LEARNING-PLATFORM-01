@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard — AetherLearn AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <!-- Star Background -->
+  <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo-icon">✨</div>
+        <span class="brand-title">AetherLearn AI</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="dashboard.html" class="nav-item active">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="nav-item">
+          <span class="icon">📚</span>
+          <span>Courses</span>
+        </a>
+        <a href="ai-assistant.html" class="nav-item">
+          <span class="icon">🤖</span>
+          <span>AI Tutor</span>
+        </a>
+        <a href="quiz.html" class="nav-item">
+          <span class="icon">⚡</span>
+          <span>Quiz Center</span>
+        </a>
+        <a href="planner.html" class="nav-item">
+          <span class="icon">📅</span>
+          <span>Study Planner</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="icon">📈</span>
+          <span>Analytics</span>
+        </a>
+
+        <div class="nav-label">Account</div>
+        <a href="profile.html" class="nav-item">
+          <span class="icon">👤</span>
+          <span>My Profile</span>
+        </a>
+        <a href="admin.html" class="nav-item" id="nav-admin-link" style="display:none;">
+          <span class="icon">👑</span>
+          <span>Admin Portal</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar" id="sidebar-avatar">S</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-user-name">Student</div>
+            <span class="user-role-badge" id="sidebar-user-role">Student</span>
+          </div>
+          <button class="btn-logout" onclick="logout()" title="Logout">🚪</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <!-- Topbar -->
+      <header class="app-topbar">
+        <div class="page-title-box">
+          <h1 id="welcome-heading">Welcome Back! 👋</h1>
+          <p id="welcome-sub">Here is your daily learning pulse and next milestones.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <a href="ai-assistant.html" class="btn btn-primary" style="padding:8px 16px;font-size:13px;">
+            🤖 Ask AI Mentor
+          </a>
+          <button class="btn-icon" onclick="window.location.href='profile.html'">
+            <span class="badge-dot" id="notif-badge" style="display:none;"></span>
+            🔔
+          </button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <!-- Overview Stats Grid -->
+        <div class="grid-cols-4" style="margin-bottom:32px;">
+          <div class="card stat-card">
+            <div class="stat-icon cyan">📚</div>
+            <div class="stat-info">
+              <h3 id="stat-courses">0</h3>
+              <p>Enrolled Courses</p>
+            </div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-icon purple">📖</div>
+            <div class="stat-info">
+              <h3 id="stat-lessons">0</h3>
+              <p>Lessons Completed</p>
+            </div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-icon green">⚡</div>
+            <div class="stat-info">
+              <h3 id="stat-quizzes">0</h3>
+              <p>Quizzes Solved</p>
+            </div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-icon orange">🏆</div>
+            <div class="stat-info">
+              <h3 id="stat-achievements">0</h3>
+              <p>Badges Unlocked</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-cols-2" style="margin-bottom:32px;">
+          <!-- Continue Learning -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+              <h2 style="font-size:18px;font-weight:700;color:#fff;">🚀 Continue Learning</h2>
+              <a href="courses.html" style="font-size:13px;color:var(--accent-cyan);text-decoration:none;">Browse All →</a>
+            </div>
+            <div id="continue-learning-list" style="display:flex;flex-direction:column;gap:16px;">
+              <div style="color:var(--text-muted);font-size:14px;text-align:center;padding:30px 0;">Loading enrolled courses...</div>
+            </div>
+          </div>
+
+          <!-- Quick Study Tools (Notes & PDF Summarizer) -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+              <h2 style="font-size:18px;font-weight:700;color:#fff;">✨ Quick AI Study Tools</h2>
+              <span class="tag tag-cyan">Instant AI</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Paste Notes or Lecture Excerpt</label>
+              <textarea id="quick-notes-input" class="form-control" rows="4" placeholder="Paste study notes or code snippet here..."></textarea>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-bottom:16px;">
+              <button class="btn btn-primary" style="flex:1;" onclick="handleQuickSummarize()">
+                📝 Generate Summary
+              </button>
+              <button class="btn btn-secondary" style="flex:1;" onclick="handleQuickQuiz()">
+                🎯 Generate Quiz
+              </button>
+            </div>
+
+            <div id="quick-tool-result" style="display:none;background:rgba(0,0,0,0.3);padding:16px;border-radius:var(--radius-sm);border:1px solid var(--border-color);max-height:220px;overflow-y:auto;font-size:13px;"></div>
+          </div>
+        </div>
+
+        <!-- Recent Activity & Upcoming Tasks -->
+        <div class="grid-cols-2">
+          <div class="card">
+            <h2 style="font-size:18px;font-weight:700;color:#fff;margin-bottom:16px;">📅 Study Planner Tasks</h2>
+            <div id="dashboard-tasks-list" style="display:flex;flex-direction:column;gap:12px;">
+              <div style="color:var(--text-muted);font-size:14px;">Loading study tasks...</div>
+            </div>
+            <a href="planner.html" class="btn btn-secondary" style="width:100%;margin-top:16px;font-size:13px;">Open Full Planner 📅</a>
+          </div>
+
+          <div class="card">
+            <h2 style="font-size:18px;font-weight:700;color:#fff;margin-bottom:16px;">🔔 Recent Activity & Badges</h2>
+            <div id="dashboard-activity-list" style="display:flex;flex-direction:column;gap:12px;">
+              <div style="color:var(--text-muted);font-size:14px;">Loading recent events...</div>
+            </div>
+            <a href="analytics.html" class="btn btn-secondary" style="width:100%;margin-top:16px;font-size:13px;">View Analytics & Stats 📈</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

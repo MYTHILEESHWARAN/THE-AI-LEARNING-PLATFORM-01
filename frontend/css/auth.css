@@ -1,0 +1,314 @@
+/* ═══════════════════════════════════════════════════════════════
+   AUTH PAGE — Specific Styles
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero (Left) ───────────────────────────────────────────── */
+.auth-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 48px;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    rgba(0, 212, 255, 0.03) 0%,
+    rgba(168, 85, 247, 0.05) 100%
+  );
+  border-right: 1px solid var(--border-glass);
+}
+
+.auth-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+  max-width: 420px;
+}
+
+/* ─── Animated Logo / Orbit ─────────────────────────────────── */
+.logo-orbit {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-core {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(168,85,247,0.2));
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0,212,255,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.orbit-ring.ring-1 {
+  width: 90px;
+  height: 90px;
+  border-color: rgba(0, 212, 255, 0.3);
+  animation: orbit 8s linear infinite;
+}
+
+.orbit-ring.ring-1::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.orbit-ring.ring-2 {
+  width: 116px;
+  height: 116px;
+  border-color: rgba(168, 85, 247, 0.25);
+  animation: orbit 14s linear infinite reverse;
+}
+
+.orbit-ring.ring-2::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--neon-purple);
+  border-radius: 50%;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px var(--neon-purple);
+}
+
+.orbit-ring.ring-3 {
+  width: 140px;
+  height: 140px;
+  border-color: rgba(244, 114, 182, 0.15);
+  animation: orbit 20s linear infinite;
+}
+
+.orbit-ring.ring-3::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--neon-pink);
+  border-radius: 50%;
+  top: 20px;
+  right: -2px;
+  box-shadow: 0 0 6px var(--neon-pink);
+}
+
+/* ─── Hero Text ─────────────────────────────────────────────── */
+.hero-brand {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+}
+
+.hero-tagline {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+/* ─── Feature Pills ─────────────────────────────────────────── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.feature-pill:hover {
+  border-color: var(--border-glow);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.feature-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ─── Glow Orbs ─────────────────────────────────────────────── */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 212, 255, 0.06);
+  top: -50px;
+  left: -80px;
+}
+
+.orb-2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(168, 85, 247, 0.08);
+  bottom: -60px;
+  right: -60px;
+}
+
+/* ─── Auth Panel (Right) ────────────────────────────────────── */
+.auth-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  gap: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 32px;
+}
+
+/* ─── Tabs ──────────────────────────────────────────────────── */
+.auth-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.auth-tab.active {
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(168,85,247,0.2));
+  color: var(--text-primary);
+  border: 1px solid var(--border-glow);
+}
+
+.auth-tab:hover:not(.active) { color: var(--text-secondary); }
+
+/* ─── Forms ─────────────────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-error {
+  background: rgba(255, 77, 109, 0.1);
+  border: 1px solid rgba(255, 77, 109, 0.3);
+  border-radius: var(--radius-sm);
+  color: #ff8fa3;
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  animation: fadeIn 0.3s ease;
+}
+
+.auth-switch-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.auth-switch-text a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-switch-text a:hover { text-decoration: underline; }
+
+/* ─── Footer ────────────────────────────────────────────────── */
+.auth-footer {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-hero {
+    padding: 48px 32px 40px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-glass);
+  }
+
+  .auth-hero-content { gap: 20px; }
+  .hero-brand { font-size: 1.8rem; }
+  .feature-list { display: none; }
+  .logo-orbit { width: 100px; height: 100px; }
+  .orbit-ring.ring-3 { display: none; }
+
+  .auth-panel { padding: 32px 20px; }
+  .auth-card { padding: 28px 24px; }
+}
+
+@media (max-width: 480px) {
+  .auth-panel { padding: 24px 16px; }
+  .auth-card { padding: 24px 20px; }
+}

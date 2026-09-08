@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Player — AetherLearn AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .course-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+    }
+    .module-accordion {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .module-header {
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .lesson-item {
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .lesson-item:hover {
+      background: rgba(0, 242, 254, 0.06);
+      color: var(--text-main);
+    }
+    .lesson-item.active {
+      background: rgba(0, 242, 254, 0.12);
+      color: #fff;
+      font-weight: 600;
+      border-left: 3px solid var(--accent-cyan);
+    }
+    @media (max-width: 992px) {
+      .course-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo-icon">✨</div>
+        <span class="brand-title">AetherLearn AI</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="dashboard.html" class="nav-item">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="nav-item active">
+          <span class="icon">📚</span>
+          <span>Courses</span>
+        </a>
+        <a href="ai-assistant.html" class="nav-item">
+          <span class="icon">🤖</span>
+          <span>AI Tutor</span>
+        </a>
+        <a href="quiz.html" class="nav-item">
+          <span class="icon">⚡</span>
+          <span>Quiz Center</span>
+        </a>
+        <a href="planner.html" class="nav-item">
+          <span class="icon">📅</span>
+          <span>Study Planner</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="icon">📈</span>
+          <span>Analytics</span>
+        </a>
+        <div class="nav-label">Account</div>
+        <a href="profile.html" class="nav-item">
+          <span class="icon">👤</span>
+          <span>My Profile</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar" id="sidebar-avatar">S</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-user-name">Student</div>
+            <span class="user-role-badge" id="sidebar-user-role">Student</span>
+          </div>
+          <button class="btn-logout" onclick="logout()" title="Logout">🚪</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="app-topbar">
+        <div class="page-title-box">
+          <a href="courses.html" style="font-size:12px;color:var(--accent-cyan);text-decoration:none;">← Back to Courses</a>
+          <h1 id="course-title-top">Course Overview</h1>
+        </div>
+        <div class="topbar-actions">
+          <a href="ai-assistant.html" class="btn btn-secondary" style="padding:8px 14px;font-size:13px;">🤖 Ask AI about this Lesson</a>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="course-layout">
+          <!-- Lesson Viewer Area -->
+          <div>
+            <div class="card" style="margin-bottom:24px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <span class="tag tag-cyan" id="current-lesson-module">Module</span>
+                <span id="lesson-status-badge" class="tag tag-green" style="display:none;">✓ Completed</span>
+              </div>
+
+              <h2 id="current-lesson-title" style="font-size:24px;color:#fff;margin-bottom:16px;">Select a lesson to begin</h2>
+              <div id="current-lesson-content" style="color:var(--text-main);line-height:1.7;font-size:15px;min-height:260px;">
+                <p>Loading course content...</p>
+              </div>
+
+              <div style="margin-top:30px;padding-top:20px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;">
+                <button id="btn-complete-lesson" class="btn btn-primary" onclick="handleCompleteCurrentLesson()" style="display:none;">
+                  ✓ Mark Lesson as Complete
+                </button>
+                <div id="course-progress-text" style="font-size:13px;color:var(--text-muted);">0 / 0 Lessons Completed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Syllabus Sidebar -->
+          <div>
+            <div class="card">
+              <h3 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:12px;">Course Progress</h3>
+              <div class="progress-bar">
+                <div class="progress-fill" id="course-progress-bar" style="width:0%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:20px;">
+                <span>Completion</span>
+                <span id="progress-percentage-label">0%</span>
+              </div>
+
+              <h3 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:14px;">Course Syllabus</h3>
+              <div id="modules-container">
+                <!-- Modules & lessons rendered here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/course-detail.js"></script>
+</body>
+</html>

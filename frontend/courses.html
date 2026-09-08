@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Catalog — AetherLearn AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo-icon">✨</div>
+        <span class="brand-title">AetherLearn AI</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="dashboard.html" class="nav-item">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="nav-item active">
+          <span class="icon">📚</span>
+          <span>Courses</span>
+        </a>
+        <a href="ai-assistant.html" class="nav-item">
+          <span class="icon">🤖</span>
+          <span>AI Tutor</span>
+        </a>
+        <a href="quiz.html" class="nav-item">
+          <span class="icon">⚡</span>
+          <span>Quiz Center</span>
+        </a>
+        <a href="planner.html" class="nav-item">
+          <span class="icon">📅</span>
+          <span>Study Planner</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="icon">📈</span>
+          <span>Analytics</span>
+        </a>
+
+        <div class="nav-label">Account</div>
+        <a href="profile.html" class="nav-item">
+          <span class="icon">👤</span>
+          <span>My Profile</span>
+        </a>
+        <a href="admin.html" class="nav-item" id="nav-admin-link" style="display:none;">
+          <span class="icon">👑</span>
+          <span>Admin Portal</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar" id="sidebar-avatar">S</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-user-name">Student</div>
+            <span class="user-role-badge" id="sidebar-user-role">Student</span>
+          </div>
+          <button class="btn-logout" onclick="logout()" title="Logout">🚪</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="app-topbar">
+        <div class="page-title-box">
+          <h1>Masterclasses & Courses 📚</h1>
+          <p>Explore full curricula, learn at your pace, and earn certificates.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-icon" onclick="window.location.href='profile.html'">🔔</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <!-- Filter Controls -->
+        <div class="card" style="margin-bottom:30px;padding:18px 24px;">
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+            <div style="flex:1;min-width:260px;">
+              <input type="text" id="course-search-input" class="form-control" placeholder="🔍 Search courses by keyword or topic..." oninput="handleFilterChange()">
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <select id="filter-category" class="form-control" style="width:auto;" onchange="handleFilterChange()">
+                <option value="all">All Categories</option>
+                <option value="ai">Artificial Intelligence</option>
+                <option value="web">Web Development</option>
+                <option value="cloud">Cloud & DevOps</option>
+                <option value="data">Data Science</option>
+              </select>
+              <select id="filter-level" class="form-control" style="width:auto;" onchange="handleFilterChange()">
+                <option value="all">All Skill Levels</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Cards Grid -->
+        <div class="grid-cols-3" id="courses-grid">
+          <div style="grid-column:1/-1;text-align:center;padding:50px;color:var(--text-muted);">
+            Loading course catalog...
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/courses.js"></script>
+</body>
+</html>
