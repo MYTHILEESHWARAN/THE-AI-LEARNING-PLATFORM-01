@@ -12,18 +12,20 @@ if (!fs.existsSync(DB_DIR)) fs.mkdirSync(DB_DIR, { recursive: true });
 
 // ─── Collections ──────────────────────────────────────────────
 const db = {
-  users:         Datastore.create({ filename: path.join(DB_DIR, 'users.db'),         autoload: true }),
-  courses:       Datastore.create({ filename: path.join(DB_DIR, 'courses.db'),       autoload: true }),
-  modules:       Datastore.create({ filename: path.join(DB_DIR, 'modules.db'),       autoload: true }),
-  lessons:       Datastore.create({ filename: path.join(DB_DIR, 'lessons.db'),       autoload: true }),
-  enrollments:   Datastore.create({ filename: path.join(DB_DIR, 'enrollments.db'),   autoload: true }),
-  lessonProgress:Datastore.create({ filename: path.join(DB_DIR, 'progress.db'),      autoload: true }),
-  quizzes:       Datastore.create({ filename: path.join(DB_DIR, 'quizzes.db'),       autoload: true }),
-  questions:     Datastore.create({ filename: path.join(DB_DIR, 'questions.db'),     autoload: true }),
-  quizAttempts:  Datastore.create({ filename: path.join(DB_DIR, 'attempts.db'),      autoload: true }),
-  studyTasks:    Datastore.create({ filename: path.join(DB_DIR, 'tasks.db'),         autoload: true }),
-  achievements:  Datastore.create({ filename: path.join(DB_DIR, 'achievements.db'),  autoload: true }),
-  notifications: Datastore.create({ filename: path.join(DB_DIR, 'notifications.db'), autoload: true }),
+  users:          Datastore.create({ filename: path.join(DB_DIR, 'users.db'),            autoload: true }),
+  courses:        Datastore.create({ filename: path.join(DB_DIR, 'courses.db'),          autoload: true }),
+  modules:        Datastore.create({ filename: path.join(DB_DIR, 'modules.db'),          autoload: true }),
+  lessons:        Datastore.create({ filename: path.join(DB_DIR, 'lessons.db'),          autoload: true }),
+  enrollments:    Datastore.create({ filename: path.join(DB_DIR, 'enrollments.db'),      autoload: true }),
+  lessonProgress: Datastore.create({ filename: path.join(DB_DIR, 'progress.db'),         autoload: true }),
+  quizzes:        Datastore.create({ filename: path.join(DB_DIR, 'quizzes.db'),          autoload: true }),
+  questions:      Datastore.create({ filename: path.join(DB_DIR, 'questions.db'),        autoload: true }),
+  quizAttempts:   Datastore.create({ filename: path.join(DB_DIR, 'attempts.db'),         autoload: true }),
+  studyTasks:     Datastore.create({ filename: path.join(DB_DIR, 'tasks.db'),            autoload: true }),
+  achievements:   Datastore.create({ filename: path.join(DB_DIR, 'achievements.db'),     autoload: true }),
+  notifications:  Datastore.create({ filename: path.join(DB_DIR, 'notifications.db'),    autoload: true }),
+  codingProblems: Datastore.create({ filename: path.join(DB_DIR, 'coding_problems.db'), autoload: true }),
+  codeSubmissions:Datastore.create({ filename: path.join(DB_DIR, 'code_submissions.db'),autoload: true }),
 };
 
 // Ensure unique indexes
@@ -37,9 +39,12 @@ async function ensureIndexes() {
 // ─── Seed Data ────────────────────────────────────────────────
 async function seedData() {
   const existingUsers = await db.users.count({});
-  if (existingUsers > 0) return; // Already seeded
+  const existingProblems = await db.codingProblems.count({});
+  if (existingUsers > 0 && existingProblems > 0) return; // Already seeded
 
-  console.log('[DB] Seeding database with sample data...');
+  console.log('[DB] Seeding database...');
+
+  if (existingUsers === 0) {
 
   // ── Users ──
   const studentHash = await bcrypt.hash('student123', 12);
@@ -198,6 +203,144 @@ async function seedData() {
   await db.studyTasks.insert({ _id: 'task_1', user_id: 'user_student', title: 'Complete Python Chapter 2', subject: 'Python Programming', duration: 60, due_date: tomorrow,  completed: false, completed_at: null, created_at: now });
   await db.studyTasks.insert({ _id: 'task_2', user_id: 'user_student', title: 'Practice DSA Problems',    subject: 'Data Structures',    duration: 45, due_date: dayafter,  completed: false, completed_at: null, created_at: now });
   await db.studyTasks.insert({ _id: 'task_3', user_id: 'user_student', title: 'Review HTML Basics',       subject: 'Web Development',    duration: 30, due_date: yesterday, completed: true,  completed_at: d1,   created_at: d2 });
+  }
+
+  // ── Coding Practice Problems ──
+  const codingProblems = [
+    {
+      _id: 'prob_hello_world',
+      title: 'Hello World',
+      description: 'Write a program that prints the text "Hello, World!" to the output. This is traditionally the first program every developer writes.',
+      difficulty: 'Easy',
+      topic: 'Basics',
+      concept: 'Output / Print statements',
+      input_format: 'No input is required.',
+      output_format: 'Print exactly: Hello, World!',
+      examples: [{ input: '', output: 'Hello, World!', explanation: 'Use the print function to output the exact string.' }],
+      test_cases: [{ input: '', expected_output: 'Hello, World!' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: '# Write your solution here\nprint()', javascript: '// Write your solution here\nconsole.log();' },
+      hints: ['Use the print() function in Python to output text', 'The output must match exactly including the comma and exclamation mark', 'In Python: print("Hello, World!")'],
+      order_index: 1
+    },
+    {
+      _id: 'prob_sum_two',
+      title: 'Sum of Two Numbers',
+      description: 'Write a program that calculates and prints the sum of two given numbers: 5 and 3. The result should be printed as a plain integer.',
+      difficulty: 'Easy',
+      topic: 'Arithmetic',
+      concept: 'Variables and arithmetic operators',
+      input_format: 'No input required. Use the values a = 5 and b = 3.',
+      output_format: 'Print the integer sum: 8',
+      examples: [{ input: '', output: '8', explanation: 'Add 5 + 3 = 8 and print the result.' }],
+      test_cases: [{ input: '', expected_output: '8' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: 'a = 5\nb = 3\n# Calculate the sum and print it\n', javascript: 'let a = 5;\nlet b = 3;\n// Calculate the sum and print it\n' },
+      hints: ['Store 5 in variable a and 3 in variable b', 'Use the + operator to add them together', 'Print or log the result of a + b'],
+      order_index: 2
+    },
+    {
+      _id: 'prob_even_odd',
+      title: 'Even or Odd',
+      description: 'Write a program that checks whether the number 7 is even or odd, and prints "Even" or "Odd" accordingly.',
+      difficulty: 'Easy',
+      topic: 'Conditionals',
+      concept: 'if/else statements and the modulo operator',
+      input_format: 'No input required. Use the value n = 7.',
+      output_format: 'Print either: Even  OR  Odd',
+      examples: [{ input: '', output: 'Odd', explanation: '7 % 2 equals 1 (not 0), so 7 is odd.' }, { input: '', output: 'Even', explanation: 'If n were 4, then 4 % 2 == 0, so it is even.' }],
+      test_cases: [{ input: '', expected_output: 'Odd' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: 'n = 7\n# Check if n is even or odd and print the result\n', javascript: 'let n = 7;\n// Check if n is even or odd and print the result\n' },
+      hints: ['The modulo operator (%) gives the remainder of division', 'If n % 2 equals 0, the number is even; otherwise it is odd', 'Use an if/else statement to decide what to print'],
+      order_index: 3
+    },
+    {
+      _id: 'prob_count_to_five',
+      title: 'Count to Five',
+      description: 'Write a program that prints numbers from 1 to 5, each on a separate line.',
+      difficulty: 'Easy',
+      topic: 'Loops',
+      concept: 'for loops and range iteration',
+      input_format: 'No input required.',
+      output_format: 'Print numbers 1 through 5, each on its own line:\n1\n2\n3\n4\n5',
+      examples: [{ input: '', output: '1\n2\n3\n4\n5', explanation: 'Use a loop that iterates from 1 to 5 (inclusive) and prints each number.' }],
+      test_cases: [{ input: '', expected_output: '1\n2\n3\n4\n5' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: '# Use a loop to print numbers 1 to 5\n', javascript: '// Use a loop to print numbers 1 to 5\n' },
+      hints: ['In Python, use for i in range(1, 6) to get 1, 2, 3, 4, 5', 'In JavaScript, use a for loop: for (let i = 1; i <= 5; i++)', 'Print each number inside the loop body'],
+      order_index: 4
+    },
+    {
+      _id: 'prob_string_length',
+      title: 'String Length',
+      description: 'Write a program that prints the number of characters in the string "AetherLearn".',
+      difficulty: 'Easy',
+      topic: 'Strings',
+      concept: 'String properties and built-in functions',
+      input_format: 'No input required. Use the string: "AetherLearn"',
+      output_format: 'Print the integer: 11',
+      examples: [{ input: '', output: '11', explanation: 'Count the characters: A-e-t-h-e-r-L-e-a-r-n = 11 characters.' }],
+      test_cases: [{ input: '', expected_output: '11' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: 'word = "AetherLearn"\n# Print the length of the string\n', javascript: 'let word = "AetherLearn";\n// Print the length of the string\n' },
+      hints: ['In Python, use the len() function: len(word)', 'In JavaScript, use the .length property: word.length', 'Print or log the result of the length operation'],
+      order_index: 5
+    },
+    {
+      _id: 'prob_list_sum',
+      title: 'Sum of a List',
+      description: 'Write a program that calculates and prints the sum of all numbers in the list: [10, 20, 30, 40, 50].',
+      difficulty: 'Medium',
+      topic: 'Lists / Arrays',
+      concept: 'Arrays, loops, and accumulator pattern',
+      input_format: 'No input required. Use: numbers = [10, 20, 30, 40, 50]',
+      output_format: 'Print the integer: 150',
+      examples: [{ input: '', output: '150', explanation: '10 + 20 + 30 + 40 + 50 = 150' }],
+      test_cases: [{ input: '', expected_output: '150' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: 'numbers = [10, 20, 30, 40, 50]\n# Calculate and print the sum of the list\n', javascript: 'let numbers = [10, 20, 30, 40, 50];\n// Calculate and print the sum of the array\n' },
+      hints: ['Create a variable to accumulate the total, starting at 0', 'Use a loop to go through each number in the list and add it to your total', 'In Python, you can also use the built-in sum() function'],
+      order_index: 6
+    },
+    {
+      _id: 'prob_reverse_string',
+      title: 'Reverse a String',
+      description: 'Write a program that prints the string "Python" reversed.',
+      difficulty: 'Medium',
+      topic: 'Strings',
+      concept: 'String manipulation and slicing',
+      input_format: 'No input required. Use the string: "Python"',
+      output_format: 'Print: nohtyP',
+      examples: [{ input: '', output: 'nohtyP', explanation: 'Reverse the characters: P-y-t-h-o-n becomes n-o-h-t-y-P.' }],
+      test_cases: [{ input: '', expected_output: 'nohtyP' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: 'word = "Python"\n# Print the reversed string\n', javascript: 'let word = "Python";\n// Print the reversed string\n' },
+      hints: ['In Python, you can use slicing: word[::-1] reverses a string', 'In JavaScript, split the string into an array, reverse it, then join it back', 'Think about iterating through the string backwards'],
+      order_index: 7
+    },
+    {
+      _id: 'prob_factorial',
+      title: 'Factorial',
+      description: 'Write a program that calculates and prints the factorial of 5. The factorial of n (written as n!) is the product of all positive integers from 1 to n.',
+      difficulty: 'Medium',
+      topic: 'Loops / Recursion',
+      concept: 'Loops, multiplication, and the factorial concept',
+      input_format: 'No input required. Calculate 5! (factorial of 5).',
+      output_format: 'Print the integer: 120',
+      examples: [{ input: '', output: '120', explanation: '5! = 5 × 4 × 3 × 2 × 1 = 120' }],
+      test_cases: [{ input: '', expected_output: '120' }],
+      supported_languages: ['python', 'javascript'],
+      starter_code: { python: 'n = 5\n# Calculate and print the factorial of n\n', javascript: 'let n = 5;\n// Calculate and print the factorial of n\n' },
+      hints: ['Start with a result variable set to 1', 'Loop from 1 to n (inclusive) and multiply the result by each number', 'For n=5: result = 1 × 2 × 3 × 4 × 5'],
+      order_index: 8
+    }
+  ];
+
+  if (existingProblems === 0) {
+    for (const p of codingProblems) await db.codingProblems.insert(p);
+    console.log('[DB] ✅ Coding problems seeded.');
+  }
 
   console.log('[DB] ✅ Seed complete. Credentials:');
   console.log('[DB]    👤 student@demo.com / student123');

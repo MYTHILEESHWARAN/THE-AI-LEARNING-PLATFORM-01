@@ -1,2 +1,3 @@
 {"_id":"attempt_1","user_id":"user_student","quiz_id":"quiz_python","score":4,"total":5,"percentage":80,"answers":{},"attempted_at":"2026-09-06T12:45:07.063Z"}
 {"_id":"attempt_2","user_id":"user_student","quiz_id":"quiz_web","score":5,"total":5,"percentage":100,"answers":{},"attempted_at":"2026-09-07T12:45:07.063Z"}
+{"user_id":"user_admin","quiz_id":"quiz_dsa","score":0,"total_questions":5,"percentage":0,"time_spent_seconds":41,"completed_at":"2026-09-08T15:49:57.028Z","_id":"zE8Je2Pa08MOJz8T"}

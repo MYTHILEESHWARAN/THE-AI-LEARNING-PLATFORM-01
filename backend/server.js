@@ -16,6 +16,7 @@ const achieveRoutes   = require('./routes/achievements');
 const notifRoutes     = require('./routes/notifications');
 const profileRoutes   = require('./routes/profile');
 const adminRoutes     = require('./routes/admin');
+const codingRoutes    = require('./routes/coding');
 
 const app  = express();
 const PORT = process.env.PORT || 3001;
@@ -28,18 +29,20 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // API Routes
-app.use('/auth',             authRoutes);
-app.use('/api/courses',      courseRoutes);
-app.use('/api/lessons',      lessonRoutes);
-app.use('/api/quizzes',      quizRoutes);
-app.use('/api/planner',      plannerRoutes);
-app.use('/api/analytics',    analyticsRoutes);
-app.use('/api/achievements', achieveRoutes);
-app.use('/api/notifications',notifRoutes);
-app.use('/api/profile',      profileRoutes);
-app.use('/api/admin',        adminRoutes);
-app.use('/',                 aiRoutes);
-app.use('/',                 uploadRoutes);
+app.use('/auth',              authRoutes);
+app.use('/api/courses',       courseRoutes);
+app.use('/api/lessons',       lessonRoutes);
+app.use('/api/quizzes',       quizRoutes);
+app.use('/api/planner',       plannerRoutes);
+app.use('/api/analytics',     analyticsRoutes);
+app.use('/api/achievements',  achieveRoutes);
+app.use('/api/notifications', notifRoutes);
+app.use('/api/profile',       profileRoutes);
+app.use('/api/admin',         adminRoutes);
+app.use('/api/coding',        codingRoutes);   // Coding practice: problems, run, submit
+app.use('/api/ai',            codingRoutes);   // AI feedback: /api/ai/feedback
+app.use('/',                  aiRoutes);
+app.use('/',                  uploadRoutes);
 
 // SPA fallback - serve frontend pages
 app.get('*', (req, res) => {

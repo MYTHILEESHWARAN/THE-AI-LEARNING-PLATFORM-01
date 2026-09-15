@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Practice — AetherLearn AI</title>
+  <meta name="description" content="Practice programming problems with AI-powered hints and explanations. Learn by doing on AetherLearn AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    /* ─── Coding Practice Layout ─────────────────────────────── */
+    .coding-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr 380px;
+      gap: 0;
+      height: calc(100vh - 80px);
+      overflow: hidden;
+    }
+
+    /* ─── Problem List Sidebar ───────────────────────────────── */
+    .problem-list-panel {
+      background: rgba(5, 5, 30, 0.8);
+      border-right: 1px solid var(--border-color);
+      overflow-y: auto;
+      padding: 0;
+    }
+
+    .problem-list-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: rgba(5, 5, 30, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .problem-list-header h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .problem-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: var(--transition);
+      gap: 10px;
+    }
+
+    .problem-item:hover {
+      background: rgba(0, 212, 255, 0.05);
+    }
+
+    .problem-item.active {
+      background: rgba(0, 212, 255, 0.1);
+      border-left: 3px solid var(--neon-blue);
+    }
+
+    .problem-item-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .diff-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 99px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .diff-easy   { background: rgba(16,255,176,0.15); color: var(--neon-green); border: 1px solid rgba(16,255,176,0.3); }
+    .diff-medium { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+    .diff-hard   { background: rgba(255,77,109,0.15); color: var(--error); border: 1px solid rgba(255,77,109,0.3); }
+
+    /* ─── Center Panel (Problem + Editor) ───────────────────── */
+    .center-panel {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      overflow: hidden;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .problem-description-panel {
+      overflow-y: auto;
+      padding: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .problem-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .problem-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .problem-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .problem-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--neon-blue);
+      margin: 16px 0 6px;
+    }
+
+    .example-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .example-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    /* ─── Code Editor Panel ──────────────────────────────────── */
+    .code-editor-panel {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .editor-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: rgba(5, 5, 30, 0.9);
+      border-bottom: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+
+    .editor-toolbar-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .lang-select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-select:focus {
+      border-color: var(--neon-blue);
+    }
+
+    .code-textarea {
+      flex: 1;
+      background: #0a0a1e;
+      border: none;
+      outline: none;
+      color: #e2e8f0;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 16px 20px;
+      resize: none;
+      tab-size: 2;
+      width: 100%;
+      overflow-y: auto;
+    }
+
+    .code-textarea::placeholder {
+      color: rgba(255,255,255,0.15);
+    }
+
+    .editor-actions {
+      display: flex;
+      gap: 10px;
+      padding: 10px 16px;
+      background: rgba(5, 5, 30, 0.9);
+      border-top: 1px solid var(--border-color);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .mock-notice {
+      font-size: 11px;
+      color: var(--text-muted);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ─── Right Panel (Results + AI Feedback) ────────────────── */
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: rgba(5, 5, 25, 0.6);
+    }
+
+    .right-panel-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+
+    .right-tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .right-tab.active {
+      color: var(--neon-blue);
+      border-bottom-color: var(--neon-blue);
+      background: rgba(0, 212, 255, 0.05);
+    }
+
+    .right-tab-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    /* ─── Test Results ───────────────────────────────────────── */
+    .output-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--neon-green);
+      min-height: 60px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .test-case-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      font-size: 13px;
+      border: 1px solid transparent;
+    }
+
+    .test-case-item.pass {
+      background: rgba(16,255,176,0.05);
+      border-color: rgba(16,255,176,0.2);
+    }
+
+    .test-case-item.fail {
+      background: rgba(255,77,109,0.05);
+      border-color: rgba(255,77,109,0.2);
+    }
+
+    .test-status-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .test-detail {
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ─── AI Feedback Panel ──────────────────────────────────── */
+    .ai-feedback-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ai-feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .ai-feedback-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .ai-feedback-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .feedback-section {
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+    }
+
+    .feedback-section.issue {
+      background: rgba(255,77,109,0.05);
+      border-color: rgba(255,77,109,0.2);
+    }
+
+    .feedback-section.hint {
+      background: rgba(251,191,36,0.05);
+      border-color: rgba(251,191,36,0.2);
+    }
+
+    .feedback-section.concept {
+      background: rgba(0,212,255,0.05);
+      border-color: rgba(0,212,255,0.2);
+    }
+
+    .feedback-section.next {
+      background: rgba(16,255,176,0.05);
+      border-color: rgba(16,255,176,0.2);
+    }
+
+    .feedback-section-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .feedback-section-label.issue   { color: var(--error); }
+    .feedback-section-label.hint    { color: #fbbf24; }
+    .feedback-section-label.concept { color: var(--neon-blue); }
+    .feedback-section-label.next    { color: var(--neon-green); }
+
+    .feedback-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .ai-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ai-loading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .empty-state-msg {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .empty-state-msg .icon {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .coding-layout {
+        grid-template-columns: 240px 1fr 320px;
+      }
+    }
+    @media (max-width: 900px) {
+      .coding-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+        overflow: auto;
+      }
+      .problem-list-panel { height: 200px; }
+      .center-panel { height: auto; grid-template-rows: auto 300px; }
+      .right-panel { height: auto; min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Star Background -->
+  <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo-icon">✨</div>
+        <span class="brand-title">AetherLearn AI</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="dashboard.html" class="nav-item">
+          <span class="icon">📊</span><span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="nav-item">
+          <span class="icon">📚</span><span>Courses</span>
+        </a>
+        <a href="ai-assistant.html" class="nav-item">
+          <span class="icon">🤖</span><span>AI Tutor</span>
+        </a>
+        <a href="quiz.html" class="nav-item">
+          <span class="icon">⚡</span><span>Quiz Center</span>
+        </a>
+        <a href="coding-practice.html" class="nav-item active">
+          <span class="icon">💻</span><span>Coding Practice</span>
+        </a>
+        <a href="planner.html" class="nav-item">
+          <span class="icon">📅</span><span>Study Planner</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="icon">📈</span><span>Analytics</span>
+        </a>
+
+        <div class="nav-label">Account</div>
+        <a href="profile.html" class="nav-item">
+          <span class="icon">👤</span><span>My Profile</span>
+        </a>
+        <a href="admin.html" class="nav-item" id="nav-admin-link" style="display:none;">
+          <span class="icon">👑</span><span>Admin Portal</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar" id="sidebar-avatar">S</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-user-name">Student</div>
+            <span class="user-role-badge" id="sidebar-user-role">Student</span>
+          </div>
+          <button class="btn-logout" onclick="logout()" title="Logout">🚪</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main" style="overflow:hidden;padding:0;">
+      <!-- Top Bar -->
+      <header class="app-topbar">
+        <div class="page-title-box">
+          <h1>💻 Coding Practice</h1>
+          <p>Solve problems, get AI hints, and learn programming concepts step by step.</p>
+        </div>
+        <div class="topbar-actions">
+          <span id="demo-mode-badge" style="display:none;font-size:11px;padding:4px 10px;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);border-radius:99px;color:#fbbf24;">⚡ Demo Mode</span>
+          <a href="ai-assistant.html" class="btn btn-primary" style="padding:8px 16px;font-size:13px;">🤖 Ask AI Tutor</a>
+        </div>
+      </header>
+
+      <!-- Coding Layout -->
+      <div class="coding-layout">
+
+        <!-- Problem List Sidebar -->
+        <div class="problem-list-panel">
+          <div class="problem-list-header">
+            <h3>Problems</h3>
+          </div>
+          <div id="problem-list">
+            <div style="padding:20px;color:var(--text-muted);font-size:13px;text-align:center;">Loading problems...</div>
+          </div>
+        </div>
+
+        <!-- Center: Problem Description + Code Editor -->
+        <div class="center-panel">
+
+          <!-- Problem Description -->
+          <div class="problem-description-panel" id="problem-description-panel">
+            <div class="empty-state-msg">
+              <span class="icon">👈</span>
+              Select a problem from the list to get started.
+            </div>
+          </div>
+
+          <!-- Code Editor -->
+          <div class="code-editor-panel">
+            <div class="editor-toolbar">
+              <span class="editor-toolbar-title">Code Editor</span>
+              <select id="lang-select" class="lang-select" onchange="switchLanguage()">
+                <option value="python">🐍 Python</option>
+                <option value="javascript">⚛️ JavaScript</option>
+              </select>
+              <div style="flex:1;"></div>
+              <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px;" onclick="resetCode()" id="reset-btn">↺ Reset</button>
+            </div>
+
+            <textarea
+              id="code-editor"
+              class="code-textarea"
+              placeholder="← Select a problem to begin coding..."
+              spellcheck="false"
+              autocorrect="off"
+              autocapitalize="off"
+              disabled
+            ></textarea>
+
+            <div class="editor-actions">
+              <button id="run-btn" class="btn btn-secondary" onclick="runCode()" disabled>
+                ▶ Run
+              </button>
+              <button id="submit-btn" class="btn btn-primary" onclick="submitCode()" disabled>
+                ✓ Submit
+              </button>
+              <button id="hint-btn" class="btn btn-ghost" onclick="getNextHint()" disabled style="font-size:12px;">
+                💡 Get Hint
+              </button>
+              <div class="mock-notice">
+                <span>🔒</span>
+                <span>Demo mode: execution is simulated for safety.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Test Results + AI Feedback -->
+        <div class="right-panel">
+          <div class="right-panel-tabs">
+            <div class="right-tab active" id="tab-results" onclick="switchRightTab('results')">📋 Results</div>
+            <div class="right-tab" id="tab-feedback" onclick="switchRightTab('feedback')">🤖 AI Feedback</div>
+            <div class="right-tab" id="tab-history" onclick="switchRightTab('history')">📂 History</div>
+          </div>
+
+          <!-- Results Tab -->
+          <div class="right-tab-content" id="content-results">
+            <div class="empty-state-msg">
+              <span class="icon">▶</span>
+              Run your code to see results here.
+            </div>
+          </div>
+
+          <!-- AI Feedback Tab -->
+          <div class="right-tab-content" id="content-feedback" style="display:none;">
+            <div class="empty-state-msg" id="feedback-empty">
+              <span class="icon">🤖</span>
+              Submit your code to receive AI-powered educational feedback.
+              <br><br>
+              <small>The AI will guide you with hints — not direct answers — to help you learn.</small>
+            </div>
+            <div id="ai-feedback-content" style="display:none;"></div>
+          </div>
+
+          <!-- History Tab -->
+          <div class="right-tab-content" id="content-history" style="display:none;">
+            <div id="submission-history">
+              <div class="empty-state-msg">
+                <span class="icon">📂</span>
+                Your submission history will appear here.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end coding-layout -->
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/coding-practice.js"></script>
+</body>
+</html>

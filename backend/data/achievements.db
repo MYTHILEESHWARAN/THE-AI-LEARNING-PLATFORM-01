@@ -1,5 +1,13 @@
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:48:29.852Z","_id":"5RjdpIGYkdmbOMm6"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:47:49.050Z","_id":"DtPBw8x2dXJoDqgq"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:37.117Z","_id":"EiHsi7LVJDa8rYlH"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:47:58.949Z","_id":"RGjVMX7d0Y4QAgXl"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:49:02.925Z","_id":"T0udxfIKrXZtJdNn"}
 {"_id":"ach_1","user_id":"user_student","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_login"}
 {"_id":"ach_2","user_id":"user_student","achievement_id":"first_enroll","title":"Eager Learner","description":"Enrolled in your first course","icon":"📚","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_enroll"}
 {"_id":"ach_3","user_id":"user_student","achievement_id":"quiz_perfect","title":"Quiz Champion","description":"Scored 100% on a quiz","icon":"🏆","earned_at":"2026-09-07T12:45:07.063Z","user_ach":"user_student_quiz_perfect"}
 {"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:19.034Z","_id":"qBtcgqW39qOCIbsV"}
-{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:37.117Z","_id":"EiHsi7LVJDa8rYlH"}
+{"user_id":"user_admin","achievement_id":"first_quiz","user_ach":"user_admin_first_quiz","earned_at":"2026-09-08T15:49:57.029Z","_id":"rPzaGNpcCYjFR9iS"}
+{"_id":"ach_1789483001188","user_id":"user_1789483001108","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-15T14:36:41.109Z","user_ach":"user_1789483001108_first_login"}
+{"_id":"ach_1789483102572","user_id":"user_1789483102501","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-15T14:38:22.503Z","user_ach":"user_1789483102501_first_login"}
+{"_id":"ach_1789483231215","user_id":"user_1789483231179","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-15T14:40:31.181Z","user_ach":"user_1789483231179_first_login"}
