@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Tutor & Assistant — AetherLearn AI</title>
+  <title>AetherLearn AI Mentor — AI Programming Tutor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/ai-tutor.css">
 </head>
 <body>
   <div id="stars-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
 
   <div class="app-container">
+    <!-- Sidebar Navigation -->
     <aside class="app-sidebar" id="sidebar">
       <div class="sidebar-header">
         <div class="brand-logo-icon">✨</div>
@@ -54,6 +56,10 @@
           <span class="icon">👤</span>
           <span>My Profile</span>
         </a>
+        <a href="admin.html" class="nav-item" id="nav-admin-link" style="display:none;">
+          <span class="icon">👑</span>
+          <span>Admin Portal</span>
+        </a>
       </nav>
       <div class="sidebar-footer">
         <div class="user-snippet">
@@ -67,56 +73,177 @@
       </div>
     </aside>
 
-    <main class="app-main">
-      <header class="app-topbar">
-        <div class="page-title-box">
-          <h1>AI Study Companion & Mentor 🤖</h1>
-          <p>Ask technical questions, get code reviews, and request tailored analogies.</p>
-        </div>
-        <div class="topbar-actions">
-          <button class="btn btn-secondary" onclick="clearChatHistory()" style="font-size:12px;padding:6px 12px;">🗑️ Clear Chat</button>
-        </div>
-      </header>
-
-      <div class="page-content" style="padding-bottom:16px;">
-        <!-- Suggested Prompts Pills -->
-        <div style="display:flex;gap:10px;margin-bottom:16px;overflow-x:auto;padding-bottom:6px;">
-          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px;white-space:nowrap;" onclick="sendQuickPrompt('Explain how Python list comprehensions work with code examples')">
-            🐍 Python List Comprehensions
-          </button>
-          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px;white-space:nowrap;" onclick="sendQuickPrompt('How does the React useEffect hook handle cleanup and dependency arrays?')">
-            ⚛️ React useEffect Guide
-          </button>
-          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px;white-space:nowrap;" onclick="sendQuickPrompt('Explain Neural Networks and backpropagation in simple terms')">
-            🧠 Neural Networks & Backprop
-          </button>
-          <button class="btn btn-secondary" style="font-size:12px;padding:6px 14px;white-space:nowrap;" onclick="sendQuickPrompt('Give me 3 practice coding challenges to test my JavaScript array methods')">
-            💡 Practice Coding Challenge
-          </button>
-        </div>
-
-        <!-- Chat Container -->
-        <div class="chat-container">
-          <div class="chat-messages" id="chat-messages-box">
-            <!-- Initial AI Welcome -->
-            <div class="chat-bubble assistant">
-              <div style="font-weight:700;color:var(--accent-cyan);margin-bottom:6px;">✨ AetherLearn AI Mentor</div>
-              <p>Hello! I am your personal 24/7 AI tutor. You can ask me to explain any complex coding concept, debug your code snippets, generate practice problems, or break down difficult course materials.</p>
-              <p style="margin-top:8px;font-size:12px;color:var(--text-muted);">Type your question below or click one of the quick topic pills above to get started!</p>
+    <!-- Main Chat Workspace -->
+    <main class="app-main" style="padding:0;overflow:hidden;">
+      <div class="ai-tutor-workspace">
+        <!-- Chat Header -->
+        <header class="chat-mentor-header">
+          <div class="mentor-brand-box">
+            <div class="mentor-avatar-glow">✨</div>
+            <div class="mentor-title-col">
+              <div class="mentor-title-row">
+                <h1 class="mentor-title">AetherLearn AI Mentor</h1>
+                <span class="status-pill">
+                  <span class="status-pill-dot"></span>
+                  Active Tutor
+                </span>
+              </div>
+              <span class="mentor-subtitle">AI-powered programming tutor • Real-time code & concept guidance</span>
             </div>
           </div>
 
-          <form class="chat-input-bar" onsubmit="handleSendChat(event)">
-            <input type="text" id="chat-input" class="form-control" placeholder="Ask your AI tutor anything (e.g. 'Explain asynchronous JavaScript' or paste code)..." autocomplete="off" required>
-            <button type="submit" class="btn btn-primary" id="chat-send-btn">
-              Send 🚀
+          <div class="header-actions">
+            <button class="btn-clear-chat" onclick="clearChatHistory()" id="clear-chat-btn" title="Clear conversation history">
+              <span>🗑️</span>
+              <span>Clear Chat</span>
             </button>
-          </form>
+          </div>
+        </header>
+
+        <!-- Conversation Scrollable Area -->
+        <div class="chat-scroll-container" id="chat-scroll-container">
+          <div class="chat-center-wrapper">
+            
+            <!-- Empty State (Shown when no conversation exists) -->
+            <div class="chat-empty-state" id="chat-empty-state">
+              <div class="empty-spark-icon">✨</div>
+              <h2 class="empty-title">AetherLearn AI Mentor</h2>
+              <div class="empty-subtitle">Your personal AI programming tutor</div>
+              <p class="empty-desc">Ask questions, explain concepts, debug code, or practice programming with me.</p>
+
+              <!-- Suggestion Cards -->
+              <div class="suggestions-grid">
+                <!-- Suggestion 1: Explain Java arrays -->
+                <div class="suggestion-card" onclick="handleSuggestionClick('Explain Java arrays')">
+                  <div class="suggestion-header">
+                    <div class="suggestion-icon-title">
+                      <span class="suggestion-icon">☕</span>
+                      <span class="suggestion-title">Explain Java arrays</span>
+                    </div>
+                    <span class="suggestion-arrow">➜</span>
+                  </div>
+                  <div class="suggestion-detail">Memory allocation, syntax, initialization & operations</div>
+                </div>
+
+                <!-- Suggestion 2: Debug my Python code -->
+                <div class="suggestion-card" onclick="handleSuggestionClick('Debug my Python code')">
+                  <div class="suggestion-header">
+                    <div class="suggestion-icon-title">
+                      <span class="suggestion-icon">🐍</span>
+                      <span class="suggestion-title">Debug my Python code</span>
+                    </div>
+                    <span class="suggestion-arrow">➜</span>
+                  </div>
+                  <div class="suggestion-detail">Identify logic bugs, mutable defaults & scope issues</div>
+                </div>
+
+                <!-- Suggestion 3: Teach me recursion -->
+                <div class="suggestion-card" onclick="handleSuggestionClick('Teach me recursion')">
+                  <div class="suggestion-header">
+                    <div class="suggestion-icon-title">
+                      <span class="suggestion-icon">🔄</span>
+                      <span class="suggestion-title">Teach me recursion</span>
+                    </div>
+                    <span class="suggestion-arrow">➜</span>
+                  </div>
+                  <div class="suggestion-detail">Base cases, call stack visualization & code examples</div>
+                </div>
+
+                <!-- Suggestion 4: Give me a coding challenge -->
+                <div class="suggestion-card" onclick="handleSuggestionClick('Give me a coding challenge')">
+                  <div class="suggestion-header">
+                    <div class="suggestion-icon-title">
+                      <span class="suggestion-icon">💡</span>
+                      <span class="suggestion-title">Give me a coding challenge</span>
+                    </div>
+                    <span class="suggestion-arrow">➜</span>
+                  </div>
+                  <div class="suggestion-detail">Algorithmic problem solving practice with test cases</div>
+                </div>
+
+                <!-- Suggestion 5: Explain this error -->
+                <div class="suggestion-card" onclick="handleSuggestionClick('Explain this error')">
+                  <div class="suggestion-header">
+                    <div class="suggestion-icon-title">
+                      <span class="suggestion-icon">⚠️</span>
+                      <span class="suggestion-title">Explain this error</span>
+                    </div>
+                    <span class="suggestion-arrow">➜</span>
+                  </div>
+                  <div class="suggestion-detail">Diagnose stack traces, NullPointer & TypeErrors</div>
+                </div>
+
+                <!-- Suggestion 6: Modern React & JavaScript -->
+                <div class="suggestion-card" onclick="handleSuggestionClick('How does the React useEffect hook handle cleanup and dependency arrays?')">
+                  <div class="suggestion-header">
+                    <div class="suggestion-icon-title">
+                      <span class="suggestion-icon">⚛️</span>
+                      <span class="suggestion-title">React Hooks Guide</span>
+                    </div>
+                    <span class="suggestion-arrow">➜</span>
+                  </div>
+                  <div class="suggestion-detail">Lifecycle effects, cleanup functions & re-render rules</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Messages List (Dynamically populated) -->
+            <div class="chat-messages-box" id="chat-messages-box" style="display:none;"></div>
+
+          </div>
         </div>
+
+        <!-- Docked Message Composer (ChatGPT-Style) -->
+        <div class="chat-composer-dock">
+          <!-- Snippet Dropdown Menu -->
+          <div class="snippet-menu hidden" id="snippet-menu">
+            <button class="snippet-item" onclick="insertCodeSnippet('python')">
+              <span>🐍</span> Python Snippet Template
+            </button>
+            <button class="snippet-item" onclick="insertCodeSnippet('javascript')">
+              <span>⚡</span> JavaScript Snippet Template
+            </button>
+            <button class="snippet-item" onclick="insertCodeSnippet('java')">
+              <span>☕</span> Java Snippet Template
+            </button>
+            <button class="snippet-item" onclick="insertCodeSnippet('sql')">
+              <span>🗄️</span> SQL Query Template
+            </button>
+            <button class="snippet-item" onclick="insertCodeSnippet('generic')">
+              <span>💻</span> Generic Code Block
+            </button>
+          </div>
+
+          <div class="composer-card">
+            <!-- Code / Attachment Option Button -->
+            <button type="button" class="composer-action-btn" id="composer-code-btn" onclick="toggleSnippetMenu()" title="Insert code snippet template">
+              <code>&lt;/&gt;</code>
+            </button>
+
+            <!-- Auto-expanding Textarea -->
+            <textarea 
+              id="chat-input" 
+              class="composer-textarea" 
+              placeholder="Ask questions, explain concepts, debug code, or practice programming... (Shift+Enter for new line)"
+              rows="1"
+              autocomplete="off"></textarea>
+
+            <!-- Send Button -->
+            <button type="button" class="composer-send-btn" id="chat-send-btn" onclick="submitUserChat()" title="Send message">
+              <span>🚀</span>
+            </button>
+          </div>
+
+          <div class="composer-disclaimer">
+            AetherLearn AI Mentor can make mistakes. Verify critical code and concepts with platform practice.
+          </div>
+        </div>
+
       </div>
     </main>
   </div>
 
+  <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
 
   <script src="js/app.js"></script>
