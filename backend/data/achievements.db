@@ -1,13 +1,37 @@
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-15T15:26:00.825Z","_id":"0fJMOSnKHjLRAh8W"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:06:29.193Z","_id":"1VrrHGXTjgdHPaq4"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-15T15:22:52.304Z","_id":"3kbuEzj2jLzxHWj5"}
 {"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:48:29.852Z","_id":"5RjdpIGYkdmbOMm6"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:01:16.122Z","_id":"9kU2ZCjz3XUsbzUc"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:35:53.645Z","_id":"AqkES941fb6pq7P8"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-15T15:18:10.886Z","_id":"D85wY4onPhaxogBM"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:26:04.398Z","_id":"Dt0FKjlCBZKplFaw"}
 {"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:47:49.050Z","_id":"DtPBw8x2dXJoDqgq"}
 {"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:37.117Z","_id":"EiHsi7LVJDa8rYlH"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:06:31.694Z","_id":"MwENw6eTRKmb4kNG"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:06:33.112Z","_id":"NhAgarCpkZVdVTLN"}
 {"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:47:58.949Z","_id":"RGjVMX7d0Y4QAgXl"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-15T15:21:09.770Z","_id":"RiRkTTLHgv1Q0qkJ"}
 {"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T15:49:02.925Z","_id":"T0udxfIKrXZtJdNn"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-15T15:26:17.643Z","_id":"WcPwpV0Rm62Odqfz"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:29:53.197Z","_id":"YoieVIqLJrGTQE6T"}
 {"_id":"ach_1","user_id":"user_student","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_login"}
-{"_id":"ach_2","user_id":"user_student","achievement_id":"first_enroll","title":"Eager Learner","description":"Enrolled in your first course","icon":"📚","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_enroll"}
-{"_id":"ach_3","user_id":"user_student","achievement_id":"quiz_perfect","title":"Quiz Champion","description":"Scored 100% on a quiz","icon":"🏆","earned_at":"2026-09-07T12:45:07.063Z","user_ach":"user_student_quiz_perfect"}
-{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:19.034Z","_id":"qBtcgqW39qOCIbsV"}
-{"user_id":"user_admin","achievement_id":"first_quiz","user_ach":"user_admin_first_quiz","earned_at":"2026-09-08T15:49:57.029Z","_id":"rPzaGNpcCYjFR9iS"}
 {"_id":"ach_1789483001188","user_id":"user_1789483001108","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-15T14:36:41.109Z","user_ach":"user_1789483001108_first_login"}
 {"_id":"ach_1789483102572","user_id":"user_1789483102501","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-15T14:38:22.503Z","user_ach":"user_1789483102501_first_login"}
 {"_id":"ach_1789483231215","user_id":"user_1789483231179","achievement_id":"first_login","title":"Welcome Aboard","description":"Created your account","icon":"🎉","earned_at":"2026-09-15T14:40:31.181Z","user_ach":"user_1789483231179_first_login"}
+{"_id":"ach_2","user_id":"user_student","achievement_id":"first_enroll","title":"Eager Learner","description":"Enrolled in your first course","icon":"📚","earned_at":"2026-09-08T12:45:06.976Z","user_ach":"user_student_first_enroll"}
+{"_id":"ach_3","user_id":"user_student","achievement_id":"quiz_perfect","title":"Quiz Champion","description":"Scored 100% on a quiz","icon":"🏆","earned_at":"2026-09-07T12:45:07.063Z","user_ach":"user_student_quiz_perfect"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:05:52.042Z","_id":"ih3AB3so2SmIN4GC"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:06:30.121Z","_id":"jkOb8oUK54vlKI0r"}
+{"user_id":"user_admin","achievement_id":"ai_scholar","user_ach":"user_admin_ai_scholar","earned_at":"2026-09-08T12:54:19.034Z","_id":"qBtcgqW39qOCIbsV"}
+{"user_id":"user_admin","achievement_id":"first_quiz","user_ach":"user_admin_first_quiz","earned_at":"2026-09-08T15:49:57.029Z","_id":"rPzaGNpcCYjFR9iS"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:06:15.231Z","_id":"ruAXBGaNy7RsIe32"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:00:49.267Z","_id":"sDmnQNzrf53WkdDY"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:06:25.503Z","_id":"sZ2K5CacdL7F0OXm"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:01:19.205Z","_id":"vwiK9cj0kJ6Bb9RC"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:44:43.558Z","_id":"UOAzhFEIAks0ydt1"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:45:01.584Z","_id":"FB5MkgYFp8qXvufc"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:45:36.687Z","_id":"6vOu3418gTNIgHja"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:45:50.905Z","_id":"Rs8bPsjy74OWJPkk"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:47:51.669Z","_id":"NJxZu8yZuyXcELgZ"}
+{"user_id":"user_student","achievement_id":"ai_scholar","user_ach":"user_student_ai_scholar","earned_at":"2026-09-15T15:48:08.988Z","_id":"yhuGPxD8UG0uFOBg"}

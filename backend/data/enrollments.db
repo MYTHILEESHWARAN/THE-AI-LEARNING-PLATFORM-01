@@ -1,3 +1,3 @@
 {"_id":"enroll_1","user_id":"user_student","course_id":"course_python","enrolled_at":"2026-09-08T12:45:06.976Z","user_course":"user_student_course_python"}
 {"_id":"enroll_2","user_id":"user_student","course_id":"course_web","enrolled_at":"2026-09-08T12:45:06.976Z","user_course":"user_student_course_web"}
-{"_id":"enroll_3","user_id":"user_student","course_id":"course_dsa","enrolled_at":"2026-09-08T12:45:06.976Z","user_course":"user_student_course_dsa"}
+{"_id":"enroll_3","user_id":"user_student","course_id":"course_dsa","enrolled_at":"2026-09-08T12:45:06.976Z","user_course":"user_student_course_dsa","progress_percentage":6}

@@ -9,7 +9,7 @@
 ## Audit Table
 
 | # | AI Tool | Purpose | Input / Prompt Summary | AI Output Summary | Human Decision | Final Implementation |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 1 | ChatGPT / Claude | Project ideation | "Design an AI-powered learning platform for CS students" | Suggested features: AI tutor chat, quiz generation, progress tracking, note summarizer | Human selected the most educationally valuable features; rejected gamification-heavy suggestions | Implemented: AI chat, quiz gen, note summarizer, progress tracking |
 | 2 | ChatGPT / Claude | UI design direction | "What UI design would work well for a dark-themed educational platform?" | Suggested: glassmorphism, neon accents, space/tech aesthetic, card-based layouts | Human chose dark space + neon palette; decided on Orbitron + Inter fonts | Implemented in `css/style.css` and `css/app.css` |
 | 3 | ChatGPT / Claude | System architecture | "What's the simplest full-stack architecture for a learning platform MVP?" | Suggested: Node.js + Express + lightweight DB + OpenAI API | Human chose NeDB for zero-setup, decided against heavy databases for the prototype | Implemented: Node.js + Express + NeDB + OpenAI |
@@ -28,21 +28,27 @@
 ## Categories of AI Usage
 
 ### ✅ Brainstorming & Ideation
+
 AI was used to generate a wide range of feature ideas. Humans evaluated these against the Project Better Tomorrow criteria (daily friction, user empathy, practical feasibility) and selected appropriate features.
 
 ### ✅ UI/UX Design Assistance
+
 AI suggested visual design directions. The human team made final aesthetic decisions, choosing the dark space/neon glassmorphism theme to align with the platform's technical/educational identity.
 
 ### ✅ Architecture Exploration
+
 AI suggested multiple architecture patterns. The human team selected NeDB for its zero-setup advantage (no database server required), making the platform easy to run for student/reviewer demos.
 
 ### ✅ Code Generation Assistance
+
 AI helped generate boilerplate code (Express routes, database queries). All AI-generated code was reviewed, tested, and significantly modified before integration.
 
 ### ✅ Prompt Engineering
+
 The AI tutor system prompts were iteratively designed with AI assistance, but the core educational philosophy (hints-only, no direct answers) was a human decision based on pedagogical best practices.
 
 ### ✅ Documentation Drafting
+
 AI helped structure documentation. All content was reviewed for accuracy against actual source code — no fabricated features or implementations were documented.
 
 ---
@@ -66,6 +72,7 @@ These decisions were made by the human development team and NOT primarily influe
 ## How to Update This Document
 
 When AI is used during further development, add a new row to the table with:
+
 - The specific AI tool used (ChatGPT, Claude, Gemini, GitHub Copilot, etc.)
 - The exact purpose of using AI
 - A summary of the prompt/input given to AI

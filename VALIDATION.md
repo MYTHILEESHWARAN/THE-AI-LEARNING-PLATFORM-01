@@ -8,7 +8,7 @@
 
 The platform follows a structured validation process aligned with Project Better Tomorrow design thinking:
 
-```
+```text
 Identify Problem
       │
       ▼
@@ -41,7 +41,7 @@ Document Results
 ## Target Validators
 
 | User Type | Description | Goal of Validation |
-|---|---|---|
+| --- | --- | --- |
 | CS/IT College Students | Students actively studying programming | Verify daily friction aligns with real experience |
 | Programming Beginners | No prior programming background | Verify beginner-friendliness of interface |
 | Students using AI tools | Students who already use ChatGPT, etc. | Understand switching barriers and value-add |
@@ -53,12 +53,14 @@ Document Results
 **Recommended duration:** 20–30 minutes per participant
 
 **Session format:**
+
 1. Brief introduction (2 min) — explain the platform, no pressure
 2. Guided walkthrough (10 min) — student navigates independently
 3. Specific task scenarios (10 min) — ask student to complete tasks
 4. Interview questions (8 min) — collect structured feedback
 
 **Sample Tasks for Observers:**
+
 1. "Please log in and explore the dashboard"
 2. "Find a coding problem and try to solve it"
 3. "Read the AI feedback and try to improve your code"
@@ -72,7 +74,7 @@ Document Results
 > **Instructions:** Fill in this table after conducting real validation sessions. Do not fabricate entries.
 
 | # | User ID / Code | Role | Problem Observed | Feedback Quote / Note | Priority | Action Taken | Status |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | [Enter code e.g. P1] | [Student / Beginner] | [What difficulty did they face?] | [Direct quote or paraphrase] | [High / Med / Low] | [What change was made] | [Done / Planned / Won't Fix] |
 | 2 | | | | | | | |
 | 3 | | | | | | | |
@@ -89,7 +91,7 @@ Document Results
 > Rate each feature after testing with real users (1 = Very Difficult, 5 = Very Easy)
 
 | Feature | Avg Ease Rating (1-5) | Most Common Issue | Improvement Made |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Login / Signup | | | |
 | Dashboard navigation | | | |
 | Finding a coding problem | | | |
@@ -119,7 +121,7 @@ Document Results
 **Results Table:**
 
 | Question | Participant Responses | Pattern / Insight |
-|---|---|---|
+| --- | --- | --- |
 | Does the problem description match your experience? | [Record responses] | |
 | How many tools do you switch between? | [Record responses] | |
 | How frustrating is debugging + researching? | [Record responses] | |
@@ -132,7 +134,7 @@ Document Results
 Record changes made as a result of validation feedback:
 
 | Version | Date | Feedback Source | Change Made | Result |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | v1.0 | [Date] | Initial self-review | [What was changed] | [Outcome] |
 | v1.1 | | | | |
 | v1.2 | | | | |
@@ -147,7 +149,7 @@ After each validation session, ask:
 > "On a scale of 0–10, how likely are you to recommend this learning tool to a classmate who is learning programming?"
 
 | Participant | Score (0-10) | Category | Reason Given |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | P1 | | [Promoter/Passive/Detractor] | |
 | P2 | | | |
 | P3 | | | |
@@ -155,6 +157,7 @@ After each validation session, ask:
 | P5 | | | |
 
 **NPS Calculation:**
+
 - Promoters: Score 9–10
 - Passives: Score 7–8
 - Detractors: Score 0–6
@@ -167,6 +170,7 @@ After each validation session, ask:
 ## How to Conduct a Validation Session
 
 ### Before the Session
+
 - [ ] Prepare a running instance of the platform
 - [ ] Have demo credentials ready: `student@demo.com` / `student123`
 - [ ] Prepare paper/digital note-taking
@@ -174,12 +178,14 @@ After each validation session, ask:
 - [ ] Ask permission to take notes
 
 ### During the Session
+
 - [ ] Let the student navigate independently — don't help immediately
 - [ ] Note where they hesitate, get confused, or make errors
 - [ ] Ask "thinking aloud" — "What are you looking for right now?"
 - [ ] Record direct quotes
 
 ### After the Session
+
 - [ ] Fill in the feedback table above
 - [ ] Debrief with the development team
 - [ ] Prioritize changes for the next iteration

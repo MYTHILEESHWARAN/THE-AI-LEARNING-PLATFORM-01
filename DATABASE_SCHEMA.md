@@ -10,7 +10,7 @@
 ## Collections Overview
 
 | Collection | File | Description |
-|---|---|---|
+| --- | --- | --- |
 | `users` | `data/users.db` | Registered student and admin accounts |
 | `courses` | `data/courses.db` | Course catalog with metadata |
 | `modules` | `data/modules.db` | Chapters/modules within each course |
@@ -31,6 +31,7 @@
 ## Schema Definitions
 
 ### `users`
+
 ```json
 {
   "_id": "user_student",
@@ -44,8 +45,9 @@
   "last_login": "2026-09-15T10:30:00.000Z"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique user ID (format: `user_<timestamp>`) |
 | `name` | String | Full name |
 | `email` | String | Unique email address (lowercase, indexed) |
@@ -61,6 +63,7 @@
 ---
 
 ### `courses`
+
 ```json
 {
   "_id": "course_python",
@@ -76,8 +79,9 @@
   "icon": "🐍"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique course ID (e.g., `course_python`) |
 | `title` | String | Course name |
 | `description` | String | Full course description |
@@ -93,6 +97,7 @@
 ---
 
 ### `modules`
+
 ```json
 {
   "_id": "mod_course_python_0",
@@ -101,8 +106,9 @@
   "order_index": 0
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique module ID |
 | `course_id` | String | FK → `courses._id` |
 | `title` | String | Module/chapter title |
@@ -113,6 +119,7 @@
 ---
 
 ### `lessons`
+
 ```json
 {
   "_id": "lesson_mod_course_python_0_0",
@@ -124,8 +131,9 @@
   "order_index": 0
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique lesson ID |
 | `module_id` | String | FK → `modules._id` |
 | `course_id` | String | FK → `courses._id` (denormalized for query performance) |
@@ -139,6 +147,7 @@
 ---
 
 ### `enrollments`
+
 ```json
 {
   "_id": "enroll_1",
@@ -149,8 +158,9 @@
   "progress_percentage": 0
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique enrollment ID |
 | `user_id` | String | FK → `users._id` |
 | `course_id` | String | FK → `courses._id` |
@@ -163,6 +173,7 @@
 ---
 
 ### `lessonProgress`
+
 ```json
 {
   "_id": "prog_0",
@@ -173,8 +184,9 @@
   "user_lesson": "user_student_lesson_mod_course_python_0_0"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique progress record ID |
 | `user_id` | String | FK → `users._id` |
 | `lesson_id` | String | FK → `lessons._id` |
@@ -187,6 +199,7 @@
 ---
 
 ### `quizzes`
+
 ```json
 {
   "_id": "quiz_python",
@@ -198,8 +211,9 @@
   "course_id": "course_python"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique quiz ID |
 | `title` | String | Quiz display name |
 | `description` | String | Short description |
@@ -211,6 +225,7 @@
 ---
 
 ### `questions`
+
 ```json
 {
   "_id": "q_quiz_python_0",
@@ -222,8 +237,9 @@
   "order_index": 0
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique question ID |
 | `quiz_id` | String | FK → `quizzes._id` |
 | `question` | String | Question text |
@@ -235,6 +251,7 @@
 ---
 
 ### `quizAttempts`
+
 ```json
 {
   "_id": "attempt_1",
@@ -247,8 +264,9 @@
   "attempted_at": "2026-09-13T00:00:00.000Z"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique attempt ID |
 | `user_id` | String | FK → `users._id` |
 | `quiz_id` | String | FK → `quizzes._id` |
@@ -261,6 +279,7 @@
 ---
 
 ### `studyTasks`
+
 ```json
 {
   "_id": "task_1",
@@ -274,8 +293,9 @@
   "created_at": "2026-09-15T00:00:00.000Z"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique task ID |
 | `user_id` | String | FK → `users._id` |
 | `title` | String | Task description |
@@ -289,6 +309,7 @@
 ---
 
 ### `achievements`
+
 ```json
 {
   "_id": "ach_1",
@@ -301,8 +322,9 @@
   "user_ach": "user_student_first_login"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique achievement record ID |
 | `user_id` | String | FK → `users._id` |
 | `achievement_id` | String | Achievement type identifier |
@@ -317,6 +339,7 @@
 ---
 
 ### `notifications`
+
 ```json
 {
   "_id": "notif_1",
@@ -328,8 +351,9 @@
   "created_at": "2026-09-15T00:00:00.000Z"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique notification ID |
 | `user_id` | String | FK → `users._id` |
 | `title` | String | Notification headline |
@@ -341,6 +365,7 @@
 ---
 
 ### `codingProblems` *(New)*
+
 ```json
 {
   "_id": "prob_hello_world",
@@ -366,8 +391,9 @@
   "order_index": 1
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique problem ID |
 | `title` | String | Problem name |
 | `description` | String | Full problem statement |
@@ -386,6 +412,7 @@
 ---
 
 ### `codeSubmissions` *(New)*
+
 ```json
 {
   "_id": "sub_1726400000000",
@@ -405,8 +432,9 @@
   "created_at": "2026-09-15T10:30:00.000Z"
 }
 ```
+
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `_id` | String | Unique submission ID |
 | `user_id` | String | FK → `users._id` |
 | `problem_id` | String | FK → `codingProblems._id` |
@@ -426,7 +454,7 @@
 
 ## Entity Relationship Summary
 
-```
+```text
 users ─────────────────────────────────────────────┐
   │                                                │
   ├── enrollments (user_id) ──── courses           │

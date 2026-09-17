@@ -9,6 +9,7 @@
 ## ✅ Completed (Fully Implemented & Working)
 
 ### Frontend
+
 - [x] Landing page (`index.html`) — hero, features grid, course preview, CTA, footer
 - [x] Login/Signup page (`login.html`) — JWT authentication, bcrypt, demo buttons
 - [x] Student Dashboard (`dashboard.html`) — stats, enrolled courses, quick AI tools, study tasks
@@ -23,6 +24,7 @@
 - [x] Coding Practice (`coding-practice.html`) — problem list, code editor, AI feedback panel
 
 ### Backend
+
 - [x] Node.js + Express server (`server.js`)
 - [x] JWT authentication middleware (`middleware/auth.js`)
 - [x] Role-based access control (student / admin)
@@ -41,6 +43,7 @@
 - [x] File upload: PDF parsing (`routes/upload.js`)
 
 ### Database
+
 - [x] NeDB embedded database (no setup required)
 - [x] 14 data collections
 - [x] Auto-seeding on first run with 2 demo accounts, 8 courses, 32 lessons
@@ -48,6 +51,7 @@
 - [x] 8 coding practice problems with examples, hints, and starter code
 
 ### AI Integration
+
 - [x] OpenAI GPT-3.5-turbo integration (server-side)
 - [x] Note/lecture summarization
 - [x] Quiz generation from notes
@@ -57,6 +61,7 @@
 - [x] Graceful AI error handling
 
 ### Security
+
 - [x] JWT authentication (7-day expiry)
 - [x] bcrypt password hashing (12 salt rounds)
 - [x] API key stored server-side in `.env`
@@ -66,6 +71,7 @@
 - [x] Safe mock code execution layer
 
 ### Documentation
+
 - [x] README.md (comprehensive)
 - [x] PROJECT_TECH_STACK.md
 - [x] ARCHITECTURE.md
@@ -101,6 +107,7 @@
 ## 🔵 Planned (Designed but Not Implemented)
 
 ### Infrastructure
+
 - [ ] **Docker sandboxed code execution** — Architecture documented in `CODE_EXECUTION_SECURITY.md`
 - [ ] **Production database** (PostgreSQL / MongoDB Atlas) — Currently using NeDB (file-based)
 - [ ] **HTTPS / TLS** — Deploy-time concern; requires reverse proxy (Nginx) or managed hosting
@@ -108,6 +115,7 @@
 - [ ] **Rate limiting** — `express-rate-limit` for API endpoints (especially AI)
 
 ### Features
+
 - [ ] **Personalized learning recommendations** — AI suggests next problems based on performance patterns
 - [ ] **Social learning features** — Discussion boards, peer review, leaderboards
 - [ ] **Advanced analytics** — Spaced repetition scheduling, performance trend prediction
@@ -118,6 +126,7 @@
 - [ ] **Real-time collaboration** — Pair programming feature
 
 ### Security Enhancements
+
 - [ ] **Per-user AI request quotas** — Prevent API cost abuse
 - [ ] **Refresh token rotation** — More secure than long-lived JWT
 - [ ] **Content Security Policy (CSP) headers**
@@ -128,7 +137,7 @@
 ## Demo Credentials
 
 | Role | Email | Password |
-|---|---|---|
+| --- | --- | --- |
 | Student | `student@demo.com` | `student123` |
 | Admin | `admin@demo.com` | `admin123` |
 
@@ -142,7 +151,7 @@ npm install
 npm start
 ```
 
-Open: http://localhost:3001
+Open: <http://localhost:3001>
 
 ---
 

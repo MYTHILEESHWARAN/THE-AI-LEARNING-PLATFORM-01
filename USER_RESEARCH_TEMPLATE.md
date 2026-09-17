@@ -13,6 +13,7 @@ This template is used to validate that the AetherLearn AI platform addresses rea
 ## Target Participant Profile
 
 Participants should meet at least one of these criteria:
+
 - Currently enrolled in a programming course (CS, IT, Data Science, etc.)
 - Self-taught programmer in the beginner-to-intermediate stage
 - Student preparing for coding assessments or technical interviews
@@ -128,7 +129,7 @@ Participants should meet at least one of these criteria:
 *Use this for quick written feedback when a full interview is not possible.*
 
 | Question | Response |
-|---|---|
+| --- | --- |
 | What is your biggest programming learning challenge? | |
 | How many resources do you typically use when stuck? | |
 | Do you use AI tools (ChatGPT, etc.) while coding? | Y / N |
@@ -144,7 +145,7 @@ Participants should meet at least one of these criteria:
 *Use during a live session to note behavior, not just spoken responses.*
 
 | Observation | Timestamp | Severity |
-|---|---|---|
+| --- | --- | --- |
 | [What did the student struggle with?] | [Time in session] | [High / Med / Low] |
 | | | |
 | | | |
@@ -155,7 +156,7 @@ Participants should meet at least one of these criteria:
 ## Participant Record
 
 | # | Participant Code | Date | Duration | Format | Notes |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 1 | P001 | [Date] | [Minutes] | [In-person / Remote] | |
 | 2 | P002 | | | | |
 | 3 | P003 | | | | |

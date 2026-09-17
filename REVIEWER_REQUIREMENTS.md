@@ -8,7 +8,7 @@
 ## Technical Requirements
 
 | # | Requirement | Status | Evidence |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | ✅ Exact technology stack specified | **Complete** | `PROJECT_TECH_STACK.md` |
 | 2 | ✅ Frontend framework specified | **Complete** | HTML5 + Vanilla JS + Vanilla CSS (no framework) |
 | 3 | ✅ Backend specified | **Complete** | Node.js + Express.js v4.18.2 |
@@ -28,7 +28,7 @@
 ## Project Better Tomorrow Requirements
 
 | # | Requirement | Status | Evidence |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 14 | ✅ Project Better Tomorrow pathway declared | **Complete** | `README.md` — Pathway B: Fresh Discovery Track |
 | 15 | ✅ User empathy research structure added | **Complete** | `USER_RESEARCH_TEMPLATE.md` |
 | 16 | ✅ Core daily friction defined | **Complete** | `README.md` — Human Friction section |
@@ -41,7 +41,7 @@
 ## GitHub / Documentation Requirements
 
 | # | Requirement | Status | Evidence |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 20 | ✅ GitHub README improved | **Complete** | `README.md` — comprehensive, professional |
 | 21 | ✅ Project status clearly documented | **Complete** | `PROJECT_STATUS.md` |
 | 22 | ✅ `.env.example` present | **Complete** | `backend/.env.example` |
@@ -54,7 +54,7 @@
 ## Implementation Requirements
 
 | # | Requirement | Status | Evidence |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 26 | ✅ Coding practice interface | **Complete** | `frontend/coding-practice.html` |
 | 27 | ✅ AI feedback panel (hint-first, not answer-first) | **Complete** | `frontend/coding-practice.html` + `routes/coding.js` |
 | 28 | ✅ Problem description with examples | **Complete** | 8 seeded problems with input/output/examples |
@@ -70,7 +70,7 @@
 
 ## Checklist Summary
 
-```
+```text
 Total Requirements: 35
 Completed:         35
 In Progress:        0
@@ -84,6 +84,7 @@ Completion: 35/35 = 100%
 ## Honest Implementation Notes
 
 ### What Is Fully Implemented
+
 - Full learning platform with 12+ pages
 - Working authentication (JWT + bcrypt)
 - Real database (NeDB with 14 collections, auto-seeded)
@@ -92,9 +93,11 @@ Completion: 35/35 = 100%
 - All documentation files listed above
 
 ### What Is Deliberately a Mock/Simulation
+
 - **Code execution** — Code is NOT actually executed. A safe mock layer simulates results. This is clearly documented in `CODE_EXECUTION_SECURITY.md` and labelled in the UI (`"Demo Mode"` indicator).
 
 ### What Is Planned (Honest)
+
 - Real sandboxed code execution (Docker)
 - Production database (PostgreSQL/MongoDB)
 - Rate limiting

@@ -31,7 +31,7 @@ Since a real sandbox requires infrastructure (Docker, VMs, cloud functions) that
 
 This approach allows the full educational workflow (write → run → AI feedback → improve) without any security risk.
 
-```
+```text
 Student submits code
         │
         ▼
@@ -72,7 +72,7 @@ POST /api/code/run
 
 The production-ready code execution system would use process isolation:
 
-```
+```text
 Student submits code
         │
         ▼
@@ -117,6 +117,7 @@ POST /api/code/run (Backend)
 ```
 
 ### Planned Docker Run Command Example
+
 ```bash
 docker run \
   --rm \
@@ -136,12 +137,14 @@ docker run \
 ## Security Requirements Checklist
 
 ### Input Validation
+
 - [x] Language is validated against an explicit whitelist (`["python", "javascript"]`)
 - [x] Code length is validated against `MAX_CODE_LENGTH` (environment variable)
 - [x] Code cannot be empty
 - [x] Problem ID is validated — problem must exist in the database
 
 ### Secret Protection
+
 - [x] `OPENAI_API_KEY` is stored in `.env` — never sent to frontend
 - [x] `JWT_SECRET` is stored in `.env` — never sent to frontend
 - [x] `.env` is in `.gitignore` — never committed to version control
@@ -149,12 +152,14 @@ docker run \
 - [x] No secrets are embedded in frontend JavaScript files
 
 ### API Security
+
 - [x] All code submission endpoints require valid JWT authentication
 - [x] Error messages are user-friendly and do not expose internal details
 - [x] No stack traces returned in production error responses
 - [x] AI prompts include instruction to avoid returning dangerous code
 
 ### Execution Security (Current: Mock)
+
 - [x] Code is NEVER executed directly on the server
 - [x] Mock responses are based on problem-defined test cases only
 - [ ] Docker isolation — Planned
@@ -164,6 +169,7 @@ docker run \
 - [ ] Rate limiting per user — Planned
 
 ### AI Safety
+
 - [x] AI prompt instructs: "Do NOT provide the complete solution"
 - [x] AI prompt instructs: "Give educational hints only"
 - [x] AI output is displayed as-is (not executed)
@@ -191,7 +197,7 @@ SUPPORTED_LANGUAGES=python,javascript
 To be completely transparent:
 
 | Action | Mock Runner | Production Sandbox (Planned) |
-|---|---|---|
+| --- | --- | --- |
 | Execute student code | ❌ Never | ✅ Yes (isolated) |
 | Evaluate code logic | ❌ Pattern-matching only | ✅ Real output |
 | Apply CPU limits | N/A | ✅ Yes |
@@ -206,7 +212,7 @@ To be completely transparent:
 
 The mock execution layer still achieves the primary educational goal:
 
-```
+```text
 Student writes code
         │
         ▼
